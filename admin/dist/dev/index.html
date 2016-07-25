@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="/">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Welcome to angular2-seed!</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- inject:css -->
+  <link rel="stylesheet" href="/node_modules/font-awesome/css/font-awesome.css?1469419695262">
+  <link rel="stylesheet" href="/dist/dev/assets/scss/main.css?1469419695262">
+  <!-- endinject -->
+</head>
+<body>
+
+  <sd-app>Loading...</sd-app>
+
+  <script>
+  // function.name (all IE)
+  // Remove once https://github.com/angular/angular/issues/6501 is fixed.
+  /*! @source http://stackoverflow.com/questions/6903762/function-name-not-supported-in-ie*/
+  if (!Object.hasOwnProperty('name')) {
+    Object.defineProperty(Function.prototype, 'name', {
+      get: function() {
+        var matches = this.toString().match(/^\s*function\s*((?![0-9])[a-zA-Z0-9_$]*)\s*\(/);
+        var name = matches && matches.length > 1 ? matches[1] : "";
+        // For better performance only parse once, and then cache the
+        // result through a new accessor for repeated access.
+        Object.defineProperty(this, 'name', {value: name});
+        return name;
+      }
+    });
+  }
+  </script>
+
+  <script>
+  // Fixes undefined module function in SystemJS bundle
+  function module() {}
+  </script>
+
+  <!-- shims:js -->
+  <script src="/node_modules/systemjs/dist/system-polyfills.src.js?1469419695259"></script>
+  <script src="/node_modules/core-js/client/shim.min.js?1469419695259"></script>
+  <script src="/node_modules/systemjs/dist/system.src.js?1469419695259"></script>
+  <!-- endinject -->
+
+  
+  <script>
+    System.config({
+  "defaultJSExtensions": true,
+  "packageConfigPaths": [
+    "/node_modules/*/package.json",
+    "/node_modules/**/package.json",
+    "/node_modules/@angular/*/package.json"
+  ],
+  "paths": {
+    "layouts/base/main": "/layouts/base/main",
+    "@angular/core": "/node_modules/@angular/core/bundles/core.umd.js",
+    "@angular/common": "/node_modules/@angular/common/bundles/common.umd.js",
+    "@angular/compiler": "/node_modules/@angular/compiler/bundles/compiler.umd.js",
+    "@angular/http": "/node_modules/@angular/http/bundles/http.umd.js",
+    "@angular/router": "/node_modules/@angular/router/index.js",
+    "@angular/platform-browser": "/node_modules/@angular/platform-browser/bundles/platform-browser.umd.js",
+    "@angular/platform-browser-dynamic": "/node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js",
+    "rxjs/*": "/node_modules/rxjs/*",
+    "app/*": "/app/*",
+    "*": "/node_modules/*"
+  },
+  "packages": {
+    "rxjs": {
+      "defaultExtension": false
+    }
+  }
+})
+  </script>
+  
+
+  <!-- libs:js -->
+  <script src="/node_modules/zone.js/dist/zone.js?1469419695260"></script>
+  <script src="/node_modules/rxjs/bundles/Rx.js?1469419695261"></script>
+  <script src="/node_modules/jquery/dist/jquery.js?1469419695261"></script>
+  <script src="/node_modules/highcharts/highcharts.js?1469419695261"></script>
+  <script src="/node_modules/highcharts/modules/exporting.js?1469419695261"></script>
+  <!-- endinject -->
+
+  <!-- inject:js -->
+  <!-- endinject -->
+
+  
+  <script>
+  System.import('layouts/base/main')
+    .catch(function (e) {
+      console.error('Error : ', e);
+    });
+  </script>
+  
+
+</body>
+</html>
