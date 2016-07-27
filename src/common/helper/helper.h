@@ -1,5 +1,5 @@
-#ifndef TEST2_HELPER_H
-#define TEST2_HELPER_H
+#ifndef IRBISPANEL_HELPER_H
+#define IRBISPANEL_HELPER_H
 
 #include <QByteArray>
 #include <QHash>
@@ -31,4 +31,4 @@ private:
 };
 
 
-#endif //TEST2_HELPER_H
+#endif //IRBISPANEL_HELPER_H

@@ -1,5 +1,5 @@
-#ifndef TEST2_SYSTEM_USER_H
-#define TEST2_SYSTEM_USER_H
+#ifndef IRBISPANEL_SYSTEM_USER_H
+#define IRBISPANEL_SYSTEM_USER_H
 
 #include <QtCore/qstring.h>
 #include <QtSql>
@@ -17,4 +17,4 @@ private:
 
 };
 
-#endif //TEST2_SYSTEM_USER_H
+#endif //IRBISPANEL_SYSTEM_USER_H

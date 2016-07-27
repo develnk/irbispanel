@@ -62,7 +62,7 @@ QString Helper::GetRandomString(const quint32 length) const
     QString randomString;
     for(quint32 i=0; i<length; ++i)
     {
-        quint32 index = qrand() % possibleCharacters.length();
+        int index = qrand() % possibleCharacters.length();
         QChar nextChar = possibleCharacters.at(index);
         randomString.append(nextChar);
     }

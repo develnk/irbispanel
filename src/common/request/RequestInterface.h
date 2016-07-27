@@ -1,5 +1,5 @@
-#ifndef TEST2_REQUESTINTERFACE_H
-#define TEST2_REQUESTINTERFACE_H
+#ifndef IRBISPANEL_REQUESTINTERFACE_H
+#define IRBISPANEL_REQUESTINTERFACE_H
 
 #include <QtPlugin>
 
@@ -23,4 +23,4 @@ signals:
 };
 
 Q_DECLARE_INTERFACE(RequestInterface, "com.LightSide.RequestInterface");
-#endif //TEST2_REQUESTINTERFACE_H
+#endif //IRBISPANEL_REQUESTINTERFACE_H

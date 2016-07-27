@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-set (PROJECT test2)
+set (PROJECT IRBISPANEL)
 project(${PROJECT})
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -Wall -fPIC -L/opt/qjson/lib -lqjson-qt5")
@@ -35,13 +35,19 @@ set (HEADERS websocket.h app.h
     src/common/helper/helper.h
     src/common/request/Request.h
     src/common/request/RequestInterface.h
-    src/common/PluginCommands.h)
+    src/common/PluginCommands.h
+    src/common/process/Process.h
+    src/common/system/SystemInfo.h
+    src/common/system/System.h)
 
 set(SOURCE main.cpp websocket.cpp app.cpp
     src/common/user/SystemUser.cpp
     src/common/session/session.cpp
     src/common/helper/helper.cpp
-    src/common/request/Request.cpp)
+    src/common/request/Request.cpp
+    src/common/process/Process.cpp
+    src/common/system/SystemInfo.cpp
+    src/common/system/System.cpp)
 
 add_executable(${PROJECT} ${HEADERS} ${SOURCE})
 qt5_use_modules(${PROJECT} WebSockets)

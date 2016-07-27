@@ -1,5 +1,5 @@
-#ifndef TEST2_USER_H
-#define TEST2_USER_H
+#ifndef IRBISPANEL_USER_H
+#define IRBISPANEL_USER_H
 
 #include <QtPlugin>
 #include <QObject>
@@ -41,4 +41,4 @@ private:
     QJsonObject getPermissions(quint32);
 };
 
-#endif //TEST2_USER_H
+#endif //IRBISPANEL_USER_H

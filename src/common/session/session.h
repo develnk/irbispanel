@@ -1,5 +1,5 @@
-#ifndef TEST2_SESSION_H
-#define TEST2_SESSION_H
+#ifndef IRBISPANEL_SESSION_H
+#define IRBISPANEL_SESSION_H
 
 #include <QMap>
 #include <QtSql>
@@ -27,4 +27,4 @@ private:
     QVariantMap loadAnonymous();
 };
 
-#endif //TEST2_SESSION_H
+#endif //IRBISPANEL_SESSION_H

@@ -18,7 +18,7 @@ app::app(QObject *parent)
     db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName("admin_plesk.sqlite3");
     if (!db.open()) {
-        exit(1);
+        qApp->exit(1);
     }
 
     // Loading plugins.

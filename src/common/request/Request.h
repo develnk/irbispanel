@@ -1,5 +1,5 @@
-#ifndef TEST2_REQUEST_H
-#define TEST2_REQUEST_H
+#ifndef IRBISPANEL_REQUEST_H
+#define IRBISPANEL_REQUEST_H
 
 #include <websocket.h>
 #include <QCryptographicHash>
@@ -25,4 +25,4 @@ private:
 };
 
 
-#endif //TEST2_REQUEST_H
+#endif //IRBISPANEL_REQUEST_H

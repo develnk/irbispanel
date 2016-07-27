@@ -1,5 +1,6 @@
 #include <QtWebSockets/qwebsocket.h>
 #include "Request.h"
+#include "../system/System.h"
 
 Request::Request(QWebSocket *pClient, QList<QString> headers, QString message, quint32 connect_key)
 {
@@ -14,7 +15,11 @@ Request::Request(QWebSocket *pClient, QList<QString> headers, QString message, q
     // @todo Write check user permissions.
 
     // Execute request.
-    if (helper.pluginMap.contains(data["controller"].toString())) {
+    if (data["controller"].toString() == "system") {
+        System *system = new System();
+        this->response = system->execute(connect_key, ses_name, req_sesid, data);
+    }
+    else if (helper.pluginMap.contains(data["controller"].toString())) {
         RequestInterface *object = helper.pluginMap[data["controller"].toString()];
         this->response = object->execute(connect_key, ses_name, req_sesid, data);
     }
@@ -23,7 +28,7 @@ Request::Request(QWebSocket *pClient, QList<QString> headers, QString message, q
 QByteArray Request::result()
 {
     QByteArray result;
-    // Если будет ответ, то сериализовать его в json и отправить в angular приложение.
+    // If have answer then serialize it to json object and send to angular application
     if (this->response.count() >= 1 ) {
         result = helper.response(this->response);
     }
@@ -54,18 +59,22 @@ QVariantMap Request::requestData(QString message)
             method_name = tst["method"].toString();
             // Check controller name and controller method
             if (helper.pluginOp.contains(controller_name)) {
-                QStringList methods = helper.pluginOp[controller_name];
-                QStringList::iterator it = qFind(methods.begin(), methods.end(), method_name);
-                if (it != methods.end()) {
-                    result = tst;
-                    qDebug() << "This method exist";
-                }
-                else {
-                    qDebug() << "This method not found";
-                }
+              QStringList methods = helper.pluginOp[controller_name];
+              QStringList::iterator it = qFind(methods.begin(), methods.end(), method_name);
+              if (it != methods.end()) {
+                result = tst;
+                qDebug() << "This method exist";
+              }
+              else {
+                qDebug() << "This method not found";
+              }
+            }
+            else if (controller_name == "system" || controller_name == "getcpu") {
+              //@TODO Create checking on exist method.
+              result = tst;
             }
             else {
-                qDebug() << "This controller not found";
+              qDebug() << "This controller not found";
             }
         }
     }
