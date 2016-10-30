@@ -1,100 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <base href="/">
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Welcome to angular2-seed!</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- inject:css -->
-  <link rel="stylesheet" href="/node_modules/font-awesome/css/font-awesome.css?1469600956952">
-  <link rel="stylesheet" href="/dist/dev/assets/scss/main.css?1469600956953">
-  <!-- endinject -->
-</head>
-<body>
+  <head>
+    <base href="/">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Irbis Panel</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/node_modules/font-awesome/css/font-awesome.css?1477851766045">
+    <!-- endinject -->
+  </head>
+  <body>
 
-  <sd-app>Loading...</sd-app>
+    <sd-app>Loading...</sd-app>
 
-  <script>
-  // function.name (all IE)
-  // Remove once https://github.com/angular/angular/issues/6501 is fixed.
-  /*! @source http://stackoverflow.com/questions/6903762/function-name-not-supported-in-ie*/
-  if (!Object.hasOwnProperty('name')) {
-    Object.defineProperty(Function.prototype, 'name', {
-      get: function() {
-        var matches = this.toString().match(/^\s*function\s*((?![0-9])[a-zA-Z0-9_$]*)\s*\(/);
-        var name = matches && matches.length > 1 ? matches[1] : "";
-        // For better performance only parse once, and then cache the
-        // result through a new accessor for repeated access.
-        Object.defineProperty(this, 'name', {value: name});
-        return name;
-      }
-    });
-  }
-  </script>
+    <!-- shims:js -->
+    <script src="/node_modules/core-js/client/shim.min.js?1477851766038"></script>
+    <script src="/node_modules/systemjs/dist/system.src.js?1477851766039"></script>
+    <!-- endinject -->
 
-  <script>
-  // Fixes undefined module function in SystemJS bundle
-  function module() {}
-  </script>
-
-  <!-- shims:js -->
-  <script src="/node_modules/systemjs/dist/system-polyfills.src.js?1469600956949"></script>
-  <script src="/node_modules/core-js/client/shim.min.js?1469600956949"></script>
-  <script src="/node_modules/systemjs/dist/system.src.js?1469600956950"></script>
-  <!-- endinject -->
-
-  
-  <script>
-    System.config({
+    
+    <script>
+      System.config({
   "defaultJSExtensions": true,
-  "packageConfigPaths": [
-    "/node_modules/*/package.json",
-    "/node_modules/**/package.json",
-    "/node_modules/@angular/*/package.json"
-  ],
   "paths": {
-    "layouts/base/main": "/layouts/base/main",
-    "@angular/core": "/node_modules/@angular/core/bundles/core.umd.js",
-    "@angular/common": "/node_modules/@angular/common/bundles/common.umd.js",
-    "@angular/compiler": "/node_modules/@angular/compiler/bundles/compiler.umd.js",
-    "@angular/http": "/node_modules/@angular/http/bundles/http.umd.js",
-    "@angular/router": "/node_modules/@angular/router/index.js",
-    "@angular/platform-browser": "/node_modules/@angular/platform-browser/bundles/platform-browser.umd.js",
-    "@angular/platform-browser-dynamic": "/node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js",
-    "rxjs/*": "/node_modules/rxjs/*",
+    "app/main": "/app/main",
+    "@angular/common": "node_modules/@angular/common/bundles/common.umd.js",
+    "@angular/compiler": "node_modules/@angular/compiler/bundles/compiler.umd.js",
+    "@angular/core": "node_modules/@angular/core/bundles/core.umd.js",
+    "@angular/forms": "node_modules/@angular/forms/bundles/forms.umd.js",
+    "@angular/http": "node_modules/@angular/http/bundles/http.umd.js",
+    "@angular/platform-browser": "node_modules/@angular/platform-browser/bundles/platform-browser.umd.js",
+    "@angular/platform-browser-dynamic": "node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js",
+    "@angular/router": "node_modules/@angular/router/bundles/router.umd.js",
+    "@angular/common/testing": "node_modules/@angular/common/bundles/common-testing.umd.js",
+    "@angular/compiler/testing": "node_modules/@angular/compiler/bundles/compiler-testing.umd.js",
+    "@angular/core/testing": "node_modules/@angular/core/bundles/core-testing.umd.js",
+    "@angular/http/testing": "node_modules/@angular/http/bundles/http-testing.umd.js",
+    "@angular/platform-browser/testing": "node_modules/@angular/platform-browser/bundles/platform-browser-testing.umd.js",
+    "@angular/platform-browser-dynamic/testing": "node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic-testing.umd.js",
+    "@angular/router/testing": "node_modules/@angular/router/bundles/router-testing.umd.js",
     "app/*": "/app/*",
-    "*": "/node_modules/*"
+    "dist/dev/*": "/base/dist/dev/*",
+    "*": "node_modules/*"
   },
-  "packages": {
-    "rxjs": {
-      "defaultExtension": false
-    }
-  }
+  "packages": {}
 })
-  </script>
-  
+    </script>
+    
 
-  <!-- libs:js -->
-  <script src="/node_modules/zone.js/dist/zone.js?1469600956951"></script>
-  <script src="/node_modules/rxjs/bundles/Rx.js?1469600956951"></script>
-  <script src="/node_modules/jquery/dist/jquery.js?1469600956951"></script>
-  <script src="/node_modules/highcharts/highcharts.js?1469600956951"></script>
-  <script src="/node_modules/highcharts/modules/exporting.js?1469600956952"></script>
-  <!-- endinject -->
+    <!-- libs:js -->
+    <script src="/node_modules/zone.js/dist/zone.js?1477851766042"></script>
+    <script src="/node_modules/.tmp/Rx.min.js?1477851766042"></script>
+    <script src="/node_modules/jquery/dist/jquery.js?1477851766043"></script>
+    <script src="/node_modules/highcharts/highcharts.js?1477851766043"></script>
+    <script src="/node_modules/highcharts/modules/exporting.js?1477851766043"></script>
+    <!-- endinject -->
 
-  <!-- inject:js -->
-  <!-- endinject -->
+    <!-- inject:js -->
+    <!-- endinject -->
 
-  
-  <script>
-  System.import('layouts/base/main')
-    .catch(function (e) {
-      console.error('Error : ', e);
-    });
-  </script>
-  
 
-</body>
+    
+    <script>
+      System.import('app/main')
+        .catch(function (e) {
+          console.error('Error : ', e);
+        });
+    </script>
+    
+
+  </body>
 </html>

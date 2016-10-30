@@ -1,7 +1,7 @@
 # Introduction
 
 [![Angular 2 Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://angular.io/styleguide)
-[![Build Status](https://travis-ci.org/mgechev/angular2-seed.svg?branch=master)](https://travis-ci.org/mgechev/angular2-seed)
+[![Build Status](https://travis-ci.org/mgechev/angular2-seed.svg?branch=fdm)](https://travis-ci.org/mgechev/angular2-seed)
 [![Build Status](https://ci.appveyor.com/api/projects/status/github/mgechev/angular2-seed?svg=true)](https://ci.appveyor.com/project/mgechev/angular2-seed)
 [![Join the chat at https://gitter.im/mgechev/angular2-seed](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mgechev/angular2-seed?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
@@ -119,7 +119,7 @@ npm run e2e
 # Instead of last command above, you can use:
 npm run e2e.live
 ```
-You can learn more about [Protractor Interactive Mode here](https://github.com/angular/protractor/blob/master/docs/debugging.md#testing-out-protractor-interactively)
+You can learn more about [Protractor Interactive Mode here](https://github.com/angular/protractor/blob/fdm/docs/debugging.md#testing-out-protractor-interactively)
 
 <!-- # Progressive Web Apps
 
@@ -144,7 +144,7 @@ Then, the commented snippet in `main.ts` must be uncommented to register the wor
 
 # Contributing
 
-Please see the [CONTRIBUTING](https://github.com/mgechev/angular2-seed/blob/master/.github/CONTRIBUTING.md) file for guidelines.
+Please see the [CONTRIBUTING](https://github.com/mgechev/angular2-seed/blob/fdm/.github/CONTRIBUTING.md) file for guidelines.
 
 # Advanced Seed Option
 
@@ -175,7 +175,7 @@ Forks of this project demonstrate how to extend and integrate with other librari
 
 # Change Log
 
-You can follow the [Angular 2 change log here](https://github.com/angular/angular/blob/master/CHANGELOG.md).
+You can follow the [Angular 2 change log here](https://github.com/angular/angular/blob/fdm/CHANGELOG.md).
 
 # License
 

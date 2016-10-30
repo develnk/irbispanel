@@ -1,0 +1,1 @@
+{"version":3,"file":"/home/kluch/QProjects/irbispanel/admin/tools/utils/project.utils.ts","sources":["/home/kluch/QProjects/irbispanel/admin/tools/utils/project.utils.ts"],"names":[],"mappings":";;;;AAAA;;GAEG;AACH,2CAAsC","sourcesContent":["/**\n * This barrel file provides the exports for the project specific utilities.\n */\nexport * from './project/sample_util';\n"]}

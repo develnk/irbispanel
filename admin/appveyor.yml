@@ -1,6 +1,6 @@
 # AppVeyor file
 # http://www.appveyor.com/docs/appveyor-yml
-# This file: cloned from https://github.com/gruntjs/grunt/blob/master/appveyor.yml
+# This file: cloned from https://github.com/gruntjs/grunt/blob/fdm/appveyor.yml
 
 # Build version format
 version: "{build}"

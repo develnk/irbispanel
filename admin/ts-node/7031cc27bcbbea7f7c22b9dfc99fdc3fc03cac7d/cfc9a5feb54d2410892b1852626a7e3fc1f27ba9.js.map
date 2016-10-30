@@ -1,0 +1,1 @@
+{"version":3,"file":"/home/kluch/QProjects/irbispanel/admin/tools/utils/project/sample_util.ts","sources":["/home/kluch/QProjects/irbispanel/admin/tools/utils/project/sample_util.ts"],"names":[],"mappings":";AAAA;IACE,iBAAiB;AACnB,CAAC;AAFD,wBAEC","sourcesContent":["export function myUtil() {\n  // Code goes here\n}\n"]}
