@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.5)
 set (PROJECT IRBISPANEL)
 project(${PROJECT})
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -Wall -fPIC -L/opt/qjson/lib -lqjson-qt5")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -Wall -fPIC -L/opt/qjson/lib -lqjson-qt5 -lutil")
 
 # Find includes in corresponding build directories
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -38,7 +38,10 @@ set (HEADERS websocket.h app.h
     src/common/PluginCommands.h
     src/common/process/Process.h
     src/common/system/SystemInfo.h
-    src/common/system/System.h)
+    src/common/system/System.h
+    src/common/pseudo_terminal/pseudoTerminal.h
+    src/common/pseudo_terminal/OperationsTerminal.h
+    src/common/pseudo_terminal/ThreadedObjectBase.h)
 
 set(SOURCE main.cpp websocket.cpp app.cpp
     src/common/user/SystemUser.cpp
@@ -47,7 +50,9 @@ set(SOURCE main.cpp websocket.cpp app.cpp
     src/common/request/Request.cpp
     src/common/process/Process.cpp
     src/common/system/SystemInfo.cpp
-    src/common/system/System.cpp)
+    src/common/system/System.cpp
+    src/common/pseudo_terminal/pseudoTerminal.cpp
+    src/common/pseudo_terminal/OperationsTerminal.cpp)
 
 add_executable(${PROJECT} ${HEADERS} ${SOURCE})
 qt5_use_modules(${PROJECT} WebSockets)

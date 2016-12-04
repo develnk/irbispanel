@@ -17,24 +17,37 @@ import { SysInfoComponent } from './pages/sysinfo/components/sysinfo';
 export const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard],
+  { path: 'dashboard', component: DashboardComponent,
     children: [
-      { path: '/home', component: HomeComponent },
-      { path: '/chart', component: ChartComponent },
-      { path: '/table', component: TableComponent },
-      { path: '/forms', component: FormComponent },
-      { path: '/element', component: BSElementComponent},
-      { path: '/grid', component: GridComponent },
-      { path: '/component', component: NG2Component },
-      { path: '/sysinfo', component: SysInfoComponent},
-      { path: '/blank-page', component: BlankPageComponent }
+      { path: 'home', component: HomeComponent },
+      { path: 'chart', component: ChartComponent },
+      { path: 'table', component: TableComponent },
+      { path: 'forms', component: FormComponent },
+      { path: 'element', component: BSElementComponent},
+      { path: 'grid', component: GridComponent },
+      { path: 'component', component: NG2Component },
+      { path: 'sysinfo', component: SysInfoComponent},
+      { path: 'blank-page', component: BlankPageComponent }
     ]
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
+  declarations: [
+    LoginComponent,
+    SignupComponent,
+    DashboardComponent,
+    HomeComponent,
+    ChartComponent,
+    TableComponent,
+    FormComponent,
+    BSElementComponent,
+    GridComponent,
+    NG2Component,
+    SysInfoComponent,
+    BlankPageComponent
+  ],
   exports: [RouterModule]
 })
-
 export class AppRoutes {}

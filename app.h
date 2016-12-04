@@ -7,6 +7,7 @@
 #include <QStringList>
 #include "websocket.h"
 #include "src/common/request/RequestInterface.h"
+#include "src/common/pseudo_terminal/pseudoTerminal.h"
 
 class app : public QObject
 {
@@ -18,6 +19,7 @@ public:
     QHash<QString, QVariant> names;
     QHash<QString, QVariant> versions;
     QHash<QString, QVariantList> dependencies;
+    pseudoTerminal *terminal;
 
 public slots:
     void onReceiveMessageFromPlugin(const quint32, const QString, const QString, QVariantMap &data);

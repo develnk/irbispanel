@@ -27,6 +27,8 @@ export class LoginComponent {
     }
   }
 
+  onSubmit() { console.log("Submitted!"); }
+
   constructor(private router: Router) {
     this.messages.subscribe(
       (message: Message[]) => {

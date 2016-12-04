@@ -8,54 +8,34 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- inject:css -->
-    <link rel="stylesheet" href="/node_modules/font-awesome/css/font-awesome.css?1477851766045">
+    <link rel="stylesheet" href="/node_modules/font-awesome/css/font-awesome.css?1480882297952">
     <!-- endinject -->
   </head>
   <body>
 
     <sd-app>Loading...</sd-app>
 
+    <script>
+        // Fixes undefined module function in SystemJS bundle
+        function module() {}
+    </script>
+
     <!-- shims:js -->
-    <script src="/node_modules/core-js/client/shim.min.js?1477851766038"></script>
-    <script src="/node_modules/systemjs/dist/system.src.js?1477851766039"></script>
+    <script src="/node_modules/core-js/client/shim.min.js?1480882297946"></script>
+    <script src="/node_modules/intl/dist/Intl.min.js?1480882297946"></script>
+    <script src="/node_modules/systemjs/dist/system.src.js?1480882297947"></script>
     <!-- endinject -->
 
     
-    <script>
-      System.config({
-  "defaultJSExtensions": true,
-  "paths": {
-    "app/main": "/app/main",
-    "@angular/common": "node_modules/@angular/common/bundles/common.umd.js",
-    "@angular/compiler": "node_modules/@angular/compiler/bundles/compiler.umd.js",
-    "@angular/core": "node_modules/@angular/core/bundles/core.umd.js",
-    "@angular/forms": "node_modules/@angular/forms/bundles/forms.umd.js",
-    "@angular/http": "node_modules/@angular/http/bundles/http.umd.js",
-    "@angular/platform-browser": "node_modules/@angular/platform-browser/bundles/platform-browser.umd.js",
-    "@angular/platform-browser-dynamic": "node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js",
-    "@angular/router": "node_modules/@angular/router/bundles/router.umd.js",
-    "@angular/common/testing": "node_modules/@angular/common/bundles/common-testing.umd.js",
-    "@angular/compiler/testing": "node_modules/@angular/compiler/bundles/compiler-testing.umd.js",
-    "@angular/core/testing": "node_modules/@angular/core/bundles/core-testing.umd.js",
-    "@angular/http/testing": "node_modules/@angular/http/bundles/http-testing.umd.js",
-    "@angular/platform-browser/testing": "node_modules/@angular/platform-browser/bundles/platform-browser-testing.umd.js",
-    "@angular/platform-browser-dynamic/testing": "node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic-testing.umd.js",
-    "@angular/router/testing": "node_modules/@angular/router/bundles/router-testing.umd.js",
-    "app/*": "/app/*",
-    "dist/dev/*": "/base/dist/dev/*",
-    "*": "node_modules/*"
-  },
-  "packages": {}
-})
-    </script>
+    <script src="/app/system-config.js"></script>
     
 
     <!-- libs:js -->
-    <script src="/node_modules/zone.js/dist/zone.js?1477851766042"></script>
-    <script src="/node_modules/.tmp/Rx.min.js?1477851766042"></script>
-    <script src="/node_modules/jquery/dist/jquery.js?1477851766043"></script>
-    <script src="/node_modules/highcharts/highcharts.js?1477851766043"></script>
-    <script src="/node_modules/highcharts/modules/exporting.js?1477851766043"></script>
+    <script src="/node_modules/zone.js/dist/zone.js?1480882297948"></script>
+    <script src="/node_modules/.tmp/Rx.min.js?1480882297949"></script>
+    <script src="/node_modules/jquery/dist/jquery.js?1480882297950"></script>
+    <script src="/node_modules/highcharts/highcharts.js?1480882297950"></script>
+    <script src="/node_modules/highcharts/modules/exporting.js?1480882297950"></script>
     <!-- endinject -->
 
     <!-- inject:js -->
@@ -64,10 +44,11 @@
 
     
     <script>
-      System.import('app/main')
-        .catch(function (e) {
-          console.error('Error : ', e);
-        });
+        System.import('app/main')
+            .catch(function (e) {
+                console.error(e.stack || e,
+                    'Not expecting this error? Report it at https://github.com/mgechev/angular-seed/issues');
+            });
     </script>
     
 

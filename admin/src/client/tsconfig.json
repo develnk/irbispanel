@@ -3,29 +3,35 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "moduleResolution": "node",
-    "sourceMap": true,
+    "declaration": false,
+    "removeComments": true,
+    "noLib": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "removeComments": false,
+    "sourceMap": true,
+    "pretty": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
     "noImplicitAny": true,
-    "suppressImplicitAnyIndexErrors": true,
+    "noImplicitReturns": true,
+    "noImplicitUseStrict": false,
+    "noFallthroughCasesInSwitch": true,
     "typeRoots": [
       "../../node_modules/@types",
       "../../node_modules"
     ],
     "types": [
       "core-js",
+      "express",
       "jasmine",
       "node",
-      "protractor"
+      "protractor",
+      "systemjs"
     ]
   },
   "exclude": [
     "node_modules",
     "dist",
-    "typings/index.d.ts",
-    "typings/modules",
     "src"
   ],
   "compileOnSave": false

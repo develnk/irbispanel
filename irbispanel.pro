@@ -7,7 +7,7 @@ CONFIG -= app_bundle
 
 QMAKE_CXXFLAGS += -std=c++14 -Wall -Wextra -fPIC
 
-LIBS += -L/opt/qjson/lib -lqjson-qt5
+LIBS += -L/opt/qjson/lib -lqjson-qt5 -lutil
 
 TEMPLATE = app
 
@@ -20,7 +20,9 @@ SOURCES += main.cpp \
     src/common/request/Request.cpp \
     src/common/process/Process.cpp \
     src/common/system/SystemInfo.cpp \
-    src/common/system/System.cpp
+    src/common/system/System.cpp \
+    src/common/pseudo_terminal/pseudoTerminal.cpp \
+    src/common/pseudo_terminal/OperationsTerminal.cpp
 
 HEADERS += \
     websocket.h \
@@ -34,4 +36,7 @@ HEADERS += \
     src/common/PluginCommands.h \
     src/common/process/Process.h \
     src/common/system/SystemInfo.h \
-    src/common/system/System.h
+    src/common/system/System.h \
+    src/common/pseudo_terminal/pseudoTerminal.h \
+    src/common/pseudo_terminal/OperationsTerminal.h \
+    src/common/pseudo_terminal/ThreadedObjectBase.h

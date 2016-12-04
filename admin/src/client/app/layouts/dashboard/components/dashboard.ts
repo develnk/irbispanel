@@ -1,10 +1,8 @@
-import { NgModule }             from '@angular/core';
-import { CommonModule }                    from '@angular/common';
-import { TopNavComponent }                 from '../../../shared/topnav/topnav';
-import { SidebarComponent }                from '../../../shared/sidebar/sidebar';
+import {Component, ViewEncapsulation} from '@angular/core';
 
-@NgModule({
-  imports:      [ CommonModule ],
-  declarations: [ TopNavComponent, SidebarComponent ]
+@Component({
+  selector: 'dashboard-cmp',
+  templateUrl: 'dashboard.html',
+  encapsulation: ViewEncapsulation.None
 })
 export class DashboardComponent {}

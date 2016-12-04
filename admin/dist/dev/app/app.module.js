@@ -8,32 +8,35 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var platform_browser_1 = require("@angular/platform-browser");
-var base_1 = require("./layouts/base/base");
-var app_routes_1 = require("./app.routes");
-var app_service_1 = require("./app.service");
+var core_1 = require('@angular/core');
+var platform_browser_1 = require('@angular/platform-browser');
+var forms_1 = require('@angular/forms');
+var common_1 = require('@angular/common');
+var app_component_1 = require('./app.component');
+var app_routes_1 = require('./app.routes');
 var AppModule = (function () {
     function AppModule() {
     }
+    AppModule = __decorate([
+        core_1.NgModule({
+            imports: [
+                platform_browser_1.BrowserModule,
+                forms_1.FormsModule,
+                app_routes_1.AppRoutes
+            ],
+            declarations: [
+                app_component_1.AppComponent,
+            ],
+            providers: [{
+                    provide: common_1.APP_BASE_HREF,
+                    useValue: '/'
+                }],
+            bootstrap: [app_component_1.AppComponent]
+        }), 
+        __metadata('design:paramtypes', [])
+    ], AppModule);
     return AppModule;
 }());
-AppModule = __decorate([
-    core_1.NgModule({
-        imports: [
-            platform_browser_1.BrowserModule,
-            app_routes_1.AppRoutes
-        ],
-        declarations: [
-            base_1.AppComponent
-        ],
-        providers: [
-            app_service_1.AppService
-        ],
-        bootstrap: [base_1.AppComponent]
-    }),
-    __metadata("design:paramtypes", [])
-], AppModule);
 exports.AppModule = AppModule;
 
-//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC9hcHAubW9kdWxlLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7QUFBQSxzQ0FBK0M7QUFDL0MsOERBQTJEO0FBQzNELDRDQUFtRDtBQUNuRCwyQ0FBeUM7QUFDekMsNkNBQTJDO0FBZ0IzQztJQUFBO0lBQ0EsQ0FBQztJQUFELGdCQUFDO0FBQUQsQ0FEQSxBQUNDLElBQUE7QUFERDtJQWJDLGVBQVEsQ0FBQztRQUNSLE9BQU8sRUFBQztZQUNOLGdDQUFhO1lBQ2Isc0JBQVM7U0FDVjtRQUNELFlBQVksRUFBRTtZQUNaLG1CQUFZO1NBQ2I7UUFDRCxTQUFTLEVBQUU7WUFDVCx3QkFBVTtTQUNYO1FBQ0QsU0FBUyxFQUFFLENBQUUsbUJBQVksQ0FBRTtLQUM1QixDQUFDOzthQUVEO0FBRFksb0JBQUEsU0FBUyxDQUFBIiwiZmlsZSI6ImFwcC9hcHAubW9kdWxlLmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgTmdNb2R1bGUgfSAgICAgICBmcm9tICdAYW5ndWxhci9jb3JlJztcbmltcG9ydCB7IEJyb3dzZXJNb2R1bGUgfSAgZnJvbSAnQGFuZ3VsYXIvcGxhdGZvcm0tYnJvd3Nlcic7XG5pbXBvcnQgeyBBcHBDb21wb25lbnQgfSBmcm9tICcuL2xheW91dHMvYmFzZS9iYXNlJztcbmltcG9ydCB7IEFwcFJvdXRlcyB9IGZyb20gJy4vYXBwLnJvdXRlcyc7XG5pbXBvcnQgeyBBcHBTZXJ2aWNlIH0gZnJvbSAnLi9hcHAuc2VydmljZSc7XG5cblxuQE5nTW9kdWxlKHtcbiAgaW1wb3J0czpbXG4gICAgQnJvd3Nlck1vZHVsZSxcbiAgICBBcHBSb3V0ZXNcbiAgXSxcbiAgZGVjbGFyYXRpb25zOiBbXG4gICAgQXBwQ29tcG9uZW50XG4gIF0sXG4gIHByb3ZpZGVyczogW1xuICAgIEFwcFNlcnZpY2VcbiAgXSxcbiAgYm9vdHN0cmFwOiBbIEFwcENvbXBvbmVudCBdXG59KVxuZXhwb3J0IGNsYXNzIEFwcE1vZHVsZSB7XG59XG4iXX0=
+//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC9hcHAubW9kdWxlLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7QUFBQSxxQkFBK0IsZUFBZSxDQUFDLENBQUE7QUFDL0MsaUNBQStCLDJCQUEyQixDQUFDLENBQUE7QUFDM0Qsc0JBQThCLGdCQUFnQixDQUFDLENBQUE7QUFDL0MsdUJBQThCLGlCQUFpQixDQUFDLENBQUE7QUFDaEQsOEJBQTZCLGlCQUFpQixDQUFDLENBQUE7QUFHL0MsMkJBQTBCLGNBQWMsQ0FBQyxDQUFBO0FBcUJ6QztJQUFBO0lBQXdCLENBQUM7SUFqQnpCO1FBQUMsZUFBUSxDQUFDO1lBQ1IsT0FBTyxFQUFDO2dCQUNOLGdDQUFhO2dCQUNiLG1CQUFXO2dCQUNYLHNCQUFTO2FBQ1Y7WUFDRCxZQUFZLEVBQUU7Z0JBQ1osNEJBQVk7YUFHYjtZQUNELFNBQVMsRUFBRSxDQUFDO29CQUNSLE9BQU8sRUFBRSxzQkFBYTtvQkFDdEIsUUFBUSxFQUFFLGlCQUFpQjtpQkFDOUIsQ0FBQztZQUNGLFNBQVMsRUFBRSxDQUFFLDRCQUFZLENBQUU7U0FDNUIsQ0FBQzs7aUJBQUE7SUFDc0IsZ0JBQUM7QUFBRCxDQUF4QixBQUF5QixJQUFBO0FBQVosaUJBQVMsWUFBRyxDQUFBIiwiZmlsZSI6ImFwcC9hcHAubW9kdWxlLmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgTmdNb2R1bGUgfSAgICAgICBmcm9tICdAYW5ndWxhci9jb3JlJztcbmltcG9ydCB7IEJyb3dzZXJNb2R1bGUgfSAgZnJvbSAnQGFuZ3VsYXIvcGxhdGZvcm0tYnJvd3Nlcic7XG5pbXBvcnQgeyBGb3Jtc01vZHVsZSB9ICAgZnJvbSAnQGFuZ3VsYXIvZm9ybXMnO1xuaW1wb3J0IHsgQVBQX0JBU0VfSFJFRiB9IGZyb20gJ0Bhbmd1bGFyL2NvbW1vbic7XG5pbXBvcnQgeyBBcHBDb21wb25lbnQgfSBmcm9tICcuL2FwcC5jb21wb25lbnQnO1xuaW1wb3J0IHsgVG9wTmF2Q29tcG9uZW50IH0gICAgICBmcm9tICcuL3NoYXJlZC90b3BuYXYvdG9wbmF2JztcbmltcG9ydCB7IFNpZGViYXJDb21wb25lbnQgfSAgICAgZnJvbSAnLi9zaGFyZWQvc2lkZWJhci9zaWRlYmFyJztcbmltcG9ydCB7IEFwcFJvdXRlcyB9IGZyb20gJy4vYXBwLnJvdXRlcyc7XG5pbXBvcnQgeyBBcHBTZXJ2aWNlIH0gZnJvbSAnLi9hcHAuc2VydmljZSc7XG5cblxuQE5nTW9kdWxlKHtcbiAgaW1wb3J0czpbXG4gICAgQnJvd3Nlck1vZHVsZSxcbiAgICBGb3Jtc01vZHVsZSxcbiAgICBBcHBSb3V0ZXNcbiAgXSxcbiAgZGVjbGFyYXRpb25zOiBbXG4gICAgQXBwQ29tcG9uZW50LFxuICAgIC8vIFRvcE5hdkNvbXBvbmVudCxcbiAgICAvLyBTaWRlYmFyQ29tcG9uZW50XG4gIF0sXG4gIHByb3ZpZGVyczogW3tcbiAgICAgIHByb3ZpZGU6IEFQUF9CQVNFX0hSRUYsXG4gICAgICB1c2VWYWx1ZTogJzwlPSBBUFBfQkFTRSAlPidcbiAgfV0sXG4gIGJvb3RzdHJhcDogWyBBcHBDb21wb25lbnQgXVxufSlcbmV4cG9ydCBjbGFzcyBBcHBNb2R1bGUge31cbiJdfQ==
