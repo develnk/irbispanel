@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './layouts/base/auth.guard';
 import { LoginComponent } from './pages/login/components/login';
@@ -34,20 +34,7 @@ export const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  declarations: [
-    LoginComponent,
-    SignupComponent,
-    DashboardComponent,
-    HomeComponent,
-    ChartComponent,
-    TableComponent,
-    FormComponent,
-    BSElementComponent,
-    GridComponent,
-    NG2Component,
-    SysInfoComponent,
-    BlankPageComponent
-  ],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
-export class AppRoutes {}
+export class AppRoutingModule {}

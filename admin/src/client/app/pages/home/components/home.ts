@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {CarouselModule, DropdownModule, AlertModule} from 'ng2-bootstrap/ng2-bootstrap';
+import { Component } from '@angular/core';
+import { CarouselModule, DropdownModule, AlertModule} from 'ng2-bootstrap/ng2-bootstrap';
 
 @Component({
 	moduleId: module.id,
@@ -31,7 +31,6 @@ class NotificationComponent { }
 	templateUrl: 'home.html',
 	styleUrls: ['home.css']
 })
-
 export class HomeComponent {
 
 	/* Carousel Variable */

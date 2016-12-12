@@ -2,7 +2,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AlertModule, ButtonsModule, DropdownModule, PaginationModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { ProgressbarModule, RatingComponent, TabsModule} from 'ng2-bootstrap/ng2-bootstrap';
-import {TooltipModule, TypeaheadModule} from 'ng2-bootstrap/ng2-bootstrap';
+import { TooltipModule, TypeaheadModule } from 'ng2-bootstrap/ng2-bootstrap';
 
 @Component({
     moduleId: module.id,

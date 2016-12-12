@@ -1,6 +1,6 @@
 #include "helper.h"
-#include <qjson/parser.h>
-#include <qjson/serializer.h>
+#include "qjson/parser.h"
+#include "qjson/serializer.h"
 
 Helper::Helper():uSingleton<Helper>(*this){}
 
