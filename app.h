@@ -19,7 +19,6 @@ public:
     QHash<QString, QVariant> names;
     QHash<QString, QVariant> versions;
     QHash<QString, QVariantList> dependencies;
-    pseudoTerminal *terminal;
 
 public slots:
     void onReceiveMessageFromPlugin(const quint32, const QString, const QString, QVariantMap &data);

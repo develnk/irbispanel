@@ -1,0 +1,10 @@
+"use strict";
+var index_1 = require("./index");
+exports.SysInfoRoutes = [
+    {
+        path: 'sysinfo',
+        component: index_1.SysInfoComponent
+    },
+];
+
+//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC9kYXNoYm9hcmQvc3lzaW5mby9zeXNpbmZvLnJvdXRlcy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBRUEsaUNBQTJDO0FBRTlCLFFBQUEsYUFBYSxHQUFZO0lBQ2xDO1FBQ0ksSUFBSSxFQUFFLFNBQVM7UUFDZixTQUFTLEVBQUUsd0JBQWdCO0tBQzlCO0NBQ0osQ0FBQyIsImZpbGUiOiJhcHAvZGFzaGJvYXJkL3N5c2luZm8vc3lzaW5mby5yb3V0ZXMuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBSb3V0ZSB9IGZyb20gJ0Bhbmd1bGFyL3JvdXRlcic7XG5cbmltcG9ydCB7IFN5c0luZm9Db21wb25lbnQgfSBmcm9tICcuL2luZGV4JztcblxuZXhwb3J0IGNvbnN0IFN5c0luZm9Sb3V0ZXM6IFJvdXRlW10gPSBbXG4gICAge1xuICAgICAgICBwYXRoOiAnc3lzaW5mbycsXG4gICAgICAgIGNvbXBvbmVudDogU3lzSW5mb0NvbXBvbmVudFxuICAgIH0sXG5dO1xuIl19

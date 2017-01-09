@@ -23,18 +23,7 @@ app::app(QObject *parent)
 
     // Loading plugins.
     loadPlugins();
-    // Create a pseudoTerminal object.
-    terminal = new pseudoTerminal();
-    const char* cmd = "ls -l";
-    const char* cmd2 = "date";
-    terminal->writeToTerminal(cmd2);
-    terminal->writeToTerminal(cmd);
-    terminal->writeToTerminal(cmd2);
-//    thread()->sleep(2);
-//    terminal->writeToTerminal(cmd);
-    //qDebug() << terminal->getData();
 }
-
 
 void app::loadPlugins()
 {

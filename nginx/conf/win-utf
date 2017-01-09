@@ -111,7 +111,7 @@ charset_map  windows-1251  utf-8 {
     F1  D181 ;   # small s
     F2  D182 ;   # small t
     F3  D183 ;   # small u
-    F4  D184 ;   # small f
+    F4  D184 ;   # small file_descriptor
     F5  D185 ;   # small kh
     F6  D186 ;   # small ts
     F7  D187 ;   # small ch

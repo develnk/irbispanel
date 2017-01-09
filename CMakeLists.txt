@@ -1,13 +1,15 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.6)
 set (PROJECT IRBISPANEL)
 project(${PROJECT})
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -Wall -fPIC -L/opt/qjson/lib -lqjson-qt5 -lutil")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -Wall -fPIC -L/opt/qjson/lib -lqjson-qt5 -L/usr/lib -ltcl -lutil -L/usr/lib/expect5.45 -lexpect5.45")
 
 # Find includes in corresponding build directories
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 # Instruct CMake to run moc automatically when needed.
 set(CMAKE_AUTOMOC ON)
+
+set(CMAKE_CXX_STANDARD 14)
 
 set(CMAKE_PREFIX_PATH "/usr/local/Qt-5.7.0")
 

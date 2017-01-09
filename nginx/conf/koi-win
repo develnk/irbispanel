@@ -39,7 +39,7 @@ charset_map  koi8-r  windows-1251 {
     C3  F6 ; # small ts
     C4  E4 ; # small d
     C5  E5 ; # small ye
-    C6  F4 ; # small f
+    C6  F4 ; # small file_descriptor
     C7  E3 ; # small g
     C8  F5 ; # small kh
     C9  E8 ; # small i

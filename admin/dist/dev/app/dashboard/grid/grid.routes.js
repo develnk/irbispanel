@@ -1,0 +1,10 @@
+"use strict";
+var index_1 = require("./index");
+exports.GridRoutes = [
+    {
+        path: 'grid',
+        component: index_1.GridComponent
+    },
+];
+
+//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC9kYXNoYm9hcmQvZ3JpZC9ncmlkLnJvdXRlcy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBRUEsaUNBQXdDO0FBRTNCLFFBQUEsVUFBVSxHQUFZO0lBQ2xDO1FBQ0MsSUFBSSxFQUFFLE1BQU07UUFDWixTQUFTLEVBQUUscUJBQWE7S0FDeEI7Q0FDRCxDQUFDIiwiZmlsZSI6ImFwcC9kYXNoYm9hcmQvZ3JpZC9ncmlkLnJvdXRlcy5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IFJvdXRlIH0gZnJvbSAnQGFuZ3VsYXIvcm91dGVyJztcblxuaW1wb3J0IHsgR3JpZENvbXBvbmVudCB9IGZyb20gJy4vaW5kZXgnO1xuXG5leHBvcnQgY29uc3QgR3JpZFJvdXRlczogUm91dGVbXSA9IFtcblx0e1xuXHRcdHBhdGg6ICdncmlkJyxcblx0XHRjb21wb25lbnQ6IEdyaWRDb21wb25lbnRcblx0fSxcbl07XG4iXX0=

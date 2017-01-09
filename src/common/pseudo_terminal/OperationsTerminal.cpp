@@ -1,101 +1,76 @@
-#include <errno.h>
-#include <sys/time.h>
-#include <sys/types.h>
-#include <unistd.h>
-#include <iostream>
-#include <utmp.h>
-#include <pty.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <malloc.h>
 #include "OperationsTerminal.h"
 
 OperationsTerminal::OperationsTerminal(QObject *parent) :  QObject(parent)
 {
-    char slaveName[255];
-    pid_t pid = forkpty(&fdm, slaveName, NULL, NULL);
-    if (pid == -1) {
-        perror("forkpty");
-        exit(1);
-    } else if (pid == 0) {
-//        execlp("bash", "/bin/bash", NULL);
-        execlp("/bin/sh", "sh", NULL);
-//        char *conString = (char *) malloc(strlen("/bin/sh"));
-//        sprintf(conString, "%s", "/bin/sh");
-//        system(conString);
-//        perror("execlp");
-        exit(1);
+    /* initialise expect and tcl */
+    Tcl_Interp *interp = Tcl_CreateInterp();
+    exp_full_buffer = true;
+    exp_match_max = 10000;
+    exp_loguser = 0;
+    exp_logfile = logFile;
+
+    if(Expect_Init(interp) == TCL_ERROR)
+    {
+        qDebug() << "Expect failed to initialize.";
+        exit(0);
     }
 
-//    QObject::connect(this, &OperationsTerminal::terminalWritten, this, &OperationsTerminal::readTer);
+    QObject::connect(this, &OperationsTerminal::endExecute, this, &OperationsTerminal::readTerminal);
+}
+
+void OperationsTerminal::readTerminal(quint32 req_number)
+{
+    QString logs(exp_buffer);
+    // Read log by line.
+    // qDebug() << results.readLine(0);
+    qDebug() << exp_buffer;
+    emit dataReady(req_number, &logs);
+}
+
+void OperationsTerminal::writeTerminal(quint32 req_number, QString cmd)
+{
+    started = true;
+    // Open a shell with a pipe
+    file_descriptor = exp_popen(cmd.toUtf8().data());
+
+    switch (exp_fexpectl(file_descriptor,
+                         exp_glob, "cannot create", command_failed,
+                         exp_glob, "command not found", command_not_found,
+                         exp_glob, "$ ", prompt,
+                         exp_end)) {
+        case command_failed:
+            qDebug() << "Could not create directory";
+            success = false;
+            break;
+        case command_not_found:
+            qDebug() << "Command not found";
+            success = false;
+            break;
+        case prompt:
+            fprintf(file_descriptor, "%s\r", "exit");
+            qDebug() << "Task completed.";
+            break;
+        default:
+            break;
+    }
+
+    emit endExecute(req_number);
+}
+
+void OperationsTerminal::buffer(QMap<quint32, QString> buff)
+{
+    qDebug() << "Buff" << buff.values();
+    if (buff.count()) {
+        QMapIterator<quint32, QString> i(buff);
+        while (i.hasNext()) {
+            i.next();
+            qDebug() << "From Buffer" << i.value();
+            writeTerminal(i.key(), i.value());
+        }
+    }
 }
 
 OperationsTerminal::~OperationsTerminal()
 {
 
-}
-
-void OperationsTerminal::readTer()
-{
-    terminalData.clear();
-    char buf[1024]; int n;
-    while (n = read(fdm, buf, 1023)) {
-        if (n == -1) {
-            if (errno == EAGAIN) {
-                sleep(1);
-                continue;
-            }
-            break;
-        }
-        buf[n] = '\0';
-        write(1, buf, strlen(buf));
-        terminalData.append(buf);
-    }
-
-    qDebug() << terminalData;
-}
-
-/**
- * Close tty.
- */
-void OperationsTerminal::terminate()
-{
-
-}
-
-QString OperationsTerminal::errorTerminal(int fd)
-{
-    return QString();
-}
-
-void OperationsTerminal::writeTerminal(const char *cmd)
-{
-//    const char* cmd = "ls -l\n\004";
-
-    const char *c = "\r";
-    write(fdm, cmd, strlen(cmd));
-    write(fdm, c, 1);
-//    if (write(fdm, txt, strlen(txt)) == -1) {
-//        perror("write");
-//        exit(1);
-//    }
-//    qDebug() << cmd;
-    emit terminalWritten();
-}
-
-QString OperationsTerminal::readTerminal()
-{
-    return terminalData;
-}
-void OperationsTerminal::buffer(QList<const char*> buff)
-{
-    qDebug() << "Buff" << buff;
-    if (buff.count()) {
-        while (!buff.isEmpty()) {
-            const char *txt = buff.takeFirst();
-            qDebug() << "From Buffer" << txt;
-            writeTerminal(txt);
-            readTer();
-        }
-    }
 }

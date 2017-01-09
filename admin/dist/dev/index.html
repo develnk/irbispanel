@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <base href="/">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,18 +8,18 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- inject:css -->
-    <link rel="stylesheet" href="/node_modules/font-awesome/css/font-awesome.css?1481529497216">
-    <link rel="stylesheet" href="/css/main.css?1481529497216">
+    <link rel="stylesheet" href="/node_modules/font-awesome/css/font-awesome.css?1483947706739">
+    <link rel="stylesheet" href="/css/app.css?1483947706740">
     <!-- endinject -->
-  </head>
-  <body>
+</head>
+<body>
 
-    <ip-app>Loading...</ip-app>
+    <sd-app></sd-app>
 
     <!-- shims:js -->
-    <script src="/node_modules/core-js/client/shim.min.js?1481529497211"></script>
-    <script src="/node_modules/intl/dist/Intl.min.js?1481529497212"></script>
-    <script src="/node_modules/systemjs/dist/system.src.js?1481529497212"></script>
+    <script src="/node_modules/core-js/client/shim.min.js?1483947706735"></script>
+    <script src="/node_modules/intl/dist/Intl.min.js?1483947706735"></script>
+    <script src="/node_modules/systemjs/dist/system.src.js?1483947706735"></script>
     <!-- endinject -->
 
     
@@ -27,27 +27,26 @@
     
 
     <!-- libs:js -->
-    <script src="/node_modules/zone.js/dist/zone.js?1481529497213"></script>
-    <script src="/node_modules/.tmp/Rx.min.js?1481529497214"></script>
-    <script src="/node_modules/jquery/dist/jquery.js?1481529497214"></script>
-    <script src="/node_modules/highcharts/highcharts.js?1481529497214"></script>
-    <script src="/node_modules/highcharts/modules/exporting.js?1481529497215"></script>
-    <script src="/node_modules/moment/moment.js?1481529497215"></script>
+    <script src="/node_modules/zone.js/dist/zone.js?1483947706737"></script>
+    <script src="/node_modules/.tmp/Rx.min.js?1483947706737"></script>
+    <script src="/node_modules/jquery/dist/jquery.js?1483947706737"></script>
+    <script src="/node_modules/highcharts/highcharts.js?1483947706738"></script>
+    <script src="/node_modules/highcharts/modules/exporting.js?1483947706738"></script>
+    <script src="/node_modules/moment/moment.js?1483947706739"></script>
     <!-- endinject -->
 
     <!-- inject:js -->
     <!-- endinject -->
 
-
     
     <script>
         System.import('app/main')
-            .catch(function (e) {
-                console.error(e.stack || e,
-                    'Not expecting this error? Report it at https://github.com/mgechev/angular-seed/issues');
-            });
+        .catch(function (e) {
+            console.error(e,
+                'Report this error at https://github.com/mgechev/angular2-seed/issues');
+        });
     </script>
     
 
-  </body>
+</body>
 </html>

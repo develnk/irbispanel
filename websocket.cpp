@@ -57,7 +57,7 @@ void WebSocket::onNewConnection()
     quint32 id = ++lastId;
     m_clients.insert(id, m_request);
 
-    connect(pSocket, &QWebSocket::textMessageReceived, [&, id](const QString message) {
+    connect(pSocket, &QWebSocket::textMessageReceived, this, [&, id](const QString message) {
         this->processMessage(message, lastId, pOp);
     });
     connect(pSocket, &QWebSocket::disconnected, this, [&, id]() {

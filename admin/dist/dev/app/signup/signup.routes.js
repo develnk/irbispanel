@@ -1,0 +1,10 @@
+"use strict";
+var index_1 = require("./index");
+exports.SignupRoutes = [
+    {
+        path: 'signup',
+        component: index_1.SignupComponent
+    }
+];
+
+//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC9zaWdudXAvc2lnbnVwLnJvdXRlcy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQ0EsaUNBQTBDO0FBRTdCLFFBQUEsWUFBWSxHQUFZO0lBQ2xDO1FBQ0UsSUFBSSxFQUFFLFFBQVE7UUFDZCxTQUFTLEVBQUUsdUJBQWU7S0FDM0I7Q0FDSCxDQUFDIiwiZmlsZSI6ImFwcC9zaWdudXAvc2lnbnVwLnJvdXRlcy5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IFJvdXRlIH0gZnJvbSAnQGFuZ3VsYXIvcm91dGVyJztcbmltcG9ydCB7IFNpZ251cENvbXBvbmVudCB9IGZyb20gJy4vaW5kZXgnO1xuXG5leHBvcnQgY29uc3QgU2lnbnVwUm91dGVzOiBSb3V0ZVtdID0gW1xuICBcdHtcbiAgICBcdHBhdGg6ICdzaWdudXAnLFxuICAgIFx0Y29tcG9uZW50OiBTaWdudXBDb21wb25lbnRcbiAgXHR9XG5dO1xuIl19

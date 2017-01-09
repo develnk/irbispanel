@@ -7,7 +7,7 @@ CONFIG -= app_bundle
 
 QMAKE_CXXFLAGS += -std=c++14 -Wall -Wextra -fPIC
 
-LIBS += -L/opt/qjson/lib -lqjson-qt5 -lutil
+LIBS += -L/opt/qjson/lib -lqjson-qt5 -L/usr/lib -ltcl -lutil -L/usr/lib/expect5.45 -lexpect5.45
 
 TEMPLATE = app
 

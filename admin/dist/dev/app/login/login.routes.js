@@ -1,0 +1,10 @@
+"use strict";
+var index_1 = require("./index");
+exports.LoginRoutes = [
+    {
+        path: '',
+        component: index_1.LoginComponent
+    }
+];
+
+//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC9sb2dpbi9sb2dpbi5yb3V0ZXMudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUNBLGlDQUF5QztBQUU1QixRQUFBLFdBQVcsR0FBWTtJQUNqQztRQUNFLElBQUksRUFBRSxFQUFFO1FBQ1IsU0FBUyxFQUFFLHNCQUFjO0tBQzFCO0NBQ0gsQ0FBQyIsImZpbGUiOiJhcHAvbG9naW4vbG9naW4ucm91dGVzLmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgUm91dGUgfSBmcm9tICdAYW5ndWxhci9yb3V0ZXInO1xuaW1wb3J0IHsgTG9naW5Db21wb25lbnQgfSBmcm9tICcuL2luZGV4JztcblxuZXhwb3J0IGNvbnN0IExvZ2luUm91dGVzOiBSb3V0ZVtdID0gW1xuICBcdHtcbiAgICBcdHBhdGg6ICcnLFxuICAgIFx0Y29tcG9uZW50OiBMb2dpbkNvbXBvbmVudFxuICBcdH1cbl07XG4iXX0=

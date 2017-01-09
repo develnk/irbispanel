@@ -1,0 +1,10 @@
+"use strict";
+var index_1 = require("./index");
+exports.TableRoutes = [
+    {
+        path: 'tables',
+        component: index_1.TableComponent
+    },
+];
+
+//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC9kYXNoYm9hcmQvdGFibGVzL3RhYmxlLnJvdXRlcy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBRUEsaUNBQXlDO0FBRTVCLFFBQUEsV0FBVyxHQUFZO0lBQ25DO1FBQ0MsSUFBSSxFQUFFLFFBQVE7UUFDZCxTQUFTLEVBQUUsc0JBQWM7S0FDekI7Q0FDRCxDQUFDIiwiZmlsZSI6ImFwcC9kYXNoYm9hcmQvdGFibGVzL3RhYmxlLnJvdXRlcy5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IFJvdXRlIH0gZnJvbSAnQGFuZ3VsYXIvcm91dGVyJztcblxuaW1wb3J0IHsgVGFibGVDb21wb25lbnQgfSBmcm9tICcuL2luZGV4JztcblxuZXhwb3J0IGNvbnN0IFRhYmxlUm91dGVzOiBSb3V0ZVtdID0gW1xuXHR7XG5cdFx0cGF0aDogJ3RhYmxlcycsXG5cdFx0Y29tcG9uZW50OiBUYWJsZUNvbXBvbmVudFxuXHR9LFxuXTtcbiJdfQ==

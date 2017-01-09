@@ -48,7 +48,7 @@
 %%
 
  /* Whitespace */
-[\v\f\t ]+    {
+[\v\file_descriptor\t ]+    {
                 m_yylloc->columns(yyleng);
               }
 
@@ -134,8 +134,8 @@ null          {
                    m_currentString.append(QLatin1String("\b"));
                 }
                 
-  \\f           {
-                  m_currentString.append(QLatin1String("\f"));
+  \\file_descriptor           {
+                  m_currentString.append(QLatin1String("\file_descriptor"));
                 }
                 
   \\n           {
@@ -179,7 +179,7 @@ null          {
 }
 
 <HEX_OPEN>{
-  [0-9A-Fa-f]{4} {
+  [0-9A-Fa-file_descriptor]{4} {
                     QString hexDigits = QString::fromUtf8(yytext, yyleng);
                     bool ok;
                     ushort hexDigit1 = hexDigits.left(2).toShort(&ok, 16);

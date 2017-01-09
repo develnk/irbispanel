@@ -1,5 +1,4 @@
 {
-  "version": "2.0.3",
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
@@ -29,10 +28,5 @@
       "systemjs"
     ]
   },
-  "exclude": [
-    "node_modules",
-    "dist",
-    "src"
-  ],
   "compileOnSave": false
 }

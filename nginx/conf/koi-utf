@@ -45,7 +45,7 @@ charset_map  koi8-r  utf-8 {
     C3  D186 ;   # small ts
     C4  D0B4 ;   # small d
     C5  D0B5 ;   # small ye
-    C6  D184 ;   # small f
+    C6  D184 ;   # small file_descriptor
     C7  D0B3 ;   # small g
     C8  D185 ;   # small kh
     C9  D0B8 ;   # small i

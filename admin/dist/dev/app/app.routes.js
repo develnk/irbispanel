@@ -1,0 +1,10 @@
+"use strict";
+var index_1 = require("./login/index");
+var index_2 = require("./signup/index");
+var index_3 = require("./dashboard/index");
+var index_4 = require("./login/index");
+exports.routes = index_1.LoginRoutes.concat(index_2.SignupRoutes, index_3.DashboardRoutes, [
+    { path: '**', component: index_4.LoginComponent }
+]);
+
+//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC9hcHAucm91dGVzLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFFQSx1Q0FBNEM7QUFDNUMsd0NBQThDO0FBQzlDLDJDQUFvRDtBQUVwRCx1Q0FBK0M7QUFFbEMsUUFBQSxNQUFNLEdBQ2YsbUJBQVcsUUFDWCxvQkFBWSxFQUNaLHVCQUFlO0lBQ2xCLEVBQUUsSUFBSSxFQUFFLElBQUksRUFBRSxTQUFTLEVBQUUsc0JBQWMsRUFBRTtHQUN4QyIsImZpbGUiOiJhcHAvYXBwLnJvdXRlcy5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IFJvdXRlcyB9IGZyb20gJ0Bhbmd1bGFyL3JvdXRlcic7XG5cbmltcG9ydCB7IExvZ2luUm91dGVzIH0gZnJvbSAnLi9sb2dpbi9pbmRleCc7XG5pbXBvcnQgeyBTaWdudXBSb3V0ZXMgfSBmcm9tICcuL3NpZ251cC9pbmRleCc7XG5pbXBvcnQgeyBEYXNoYm9hcmRSb3V0ZXMgfSBmcm9tICcuL2Rhc2hib2FyZC9pbmRleCc7XG5cbmltcG9ydCB7IExvZ2luQ29tcG9uZW50IH0gZnJvbSAnLi9sb2dpbi9pbmRleCc7XG5cbmV4cG9ydCBjb25zdCByb3V0ZXM6IFJvdXRlcyA9IFtcblx0Li4uTG9naW5Sb3V0ZXMsXG5cdC4uLlNpZ251cFJvdXRlcyxcblx0Li4uRGFzaGJvYXJkUm91dGVzLFxuXHR7IHBhdGg6ICcqKicsIGNvbXBvbmVudDogTG9naW5Db21wb25lbnQgfVxuXTtcbiJdfQ==
