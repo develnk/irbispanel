@@ -1,7 +1,7 @@
 import { join } from 'path';
 
 import { SeedConfig } from './seed.config';
-import { InjectableDependency } from './seed.config.interfaces';
+import { InjectableDependency, ExtendPackages } from './seed.config.interfaces';
 
 /**
  * This class extends the basic seed configuration, allowing for project specific overrides. A few examples can be found
@@ -31,10 +31,31 @@ export class ProjectConfig extends SeedConfig {
       // {src: 'lodash/lodash.min.js', inject: 'libs'},
     ];
 
-    this.SYSTEM_CONFIG_DEV.map = {
-      'moment': 'moment/moment.js',
-      'ng2-bootstrap/ng2-bootstrap': 'ng2-bootstrap/bundles/ng2-bootstrap.umd.js',
-    };
+    let additionalPackages: ExtendPackages[] = [
+      // required for dev build
+      {
+        name:'ng2-bootstrap',
+        path:'node_modules/ng2-bootstrap/bundles/ng2-bootstrap.umd.min.js'
+      },
+
+      // required for prod build
+      {
+        name:'ng2-bootstrap/*',
+        path:'node_modules/ng2-bootstrap/bundles/ng2-bootstrap.umd.min.js'
+      },
+
+      // mandatory dependency for ng2-bootstrap datepicker
+      {
+        name:'moment',
+        path:'node_modules/moment',
+        packageMeta:{
+          main: 'moment.js',
+          defaultExtension: 'js'
+        }
+      }
+    ];
+
+    this.addPackagesBundles(additionalPackages);
 
     // Add `local` third-party libraries to be injected/bundled.
     this.APP_ASSETS = [
