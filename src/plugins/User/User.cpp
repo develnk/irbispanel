@@ -1,7 +1,7 @@
 #include "User.h"
 #include <QSqlQuery>
-#include "src/common/helper/helper.h"
-#include "src/common/user/SystemUser.h"
+#include "../../common/helper/helper.h"
+#include "../../common/user/SystemUser.h"
 
 User::User()
 {
@@ -41,7 +41,7 @@ QJsonObject User::execute(quint32 key, QString ses_name, QString ses_id, QVarian
     QMetaObject MetaObject = this->staticMetaObject;
     int indexOfEnumerator = MetaObject.indexOfEnumerator("op");
     QMetaEnum MetaEnum = MetaObject.enumerator(indexOfEnumerator);
-    QVariantMap values = data["values"].toMap();
+    QVariantMap values = data["data"].toMap();
 
     switch (MetaEnum.keysToValue(data["method"].toString().toLatin1().constData())) {
         case login:

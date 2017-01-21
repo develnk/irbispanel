@@ -24,7 +24,7 @@ QStringList System::operations()
 QJsonObject System::execute(quint32 key, QString ses_name, QString ses_id, QVariantMap data)
 {
     QJsonObject result;
-    QVariantMap values = data["values"].toMap();
+//    QVariantMap values = data["data"].toMap();
     if (data["method"].toString() == "getsysinfo") {
         SystemInfo info;
         result.insert("data", info.sys_name());

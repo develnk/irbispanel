@@ -8,10 +8,9 @@
 #include <QJsonArray>
 #include <QStringList>
 #include <QMetaEnum>
-#include <iostream>
 #include "QtSql"
-#include "src/common/request/RequestInterface.h"
-#include "src/common/usingleton.h"
+#include "../../common/request/RequestInterface.h"
+#include "../../common/usingleton.h"
 
 class   Helper;
 #define helper Helper::instance()

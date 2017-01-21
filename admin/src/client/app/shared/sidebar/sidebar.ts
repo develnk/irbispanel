@@ -5,7 +5,6 @@ import { Component } from '@angular/core';
 	selector: 'sidebar-cmp',
 	templateUrl: 'sidebar.html'
 })
-
 export class SidebarComponent {
 	isActive = false;
 	showMenu: string = '';

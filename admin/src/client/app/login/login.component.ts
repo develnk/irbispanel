@@ -1,7 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { AppService, Message } from '../app.service';
 import { Subject } from 'rxjs/Rx';
+import { WebSocketService, Message }       from "../services/websocket.service";
+import { ChatChannelService } from "../services/chat.channel.service";
+import { AuthService } from "../auth.service";
+import { Globals } from "../globals";
 
 /**
  *    This class represents the lazy loaded LoginComponent.
@@ -11,16 +14,20 @@ import { Subject } from 'rxjs/Rx';
     selector: 'login-cmp',
     templateUrl: 'login.component.html'
 })
-export class LoginComponent {
-    private service: AppService = AppService.getInstance();
-    private messages: Subject<Message[]> = AppService.getMessages();
+export class LoginComponent implements OnDestroy {
+    // private service: AppService = AppService.getInstance();
+    // private messages: Subject<Message[]> = AppService.getMessages();
+    private messages: Subject<Message[]> = new Subject<Message[]>();
+    newMessageData: Message;
     private username: string;
     private password: string;
+    chatSubscribed:boolean = false;
 
-    private static loginOperation(data: LoginData, router: Router) {
+    private static loginOperation(data: LoginData, router: Router, globals: Globals) {
         if (data.ses_id) {
-            if (data.status === 1) {
+            if (data.status == 1) {
                 sessionStorage.setItem('current_user', JSON.stringify(data));
+                globals.USER = <LoginData>data;
                 router.navigate(['/dashboard/home']);
                 console.log(JSON.parse(sessionStorage.getItem('current_user')));
             }
@@ -30,35 +37,46 @@ export class LoginComponent {
         }
     }
 
-    onSubmit() {
-        console.log("Submitted!");
-    }
+    constructor(private chatChannelService:ChatChannelService, private webSocketService:WebSocketService, private router: Router, public authService: AuthService, private globals: Globals ) {
+        let key:string = sessionStorage.getItem('current_user');
+        if (key) {
+            globals.USER = <LoginData>JSON.parse(key);
+            router.navigate(['/dashboard/home']);
+        }
 
-    constructor(private router: Router) {
-        this.messages.subscribe(
-            (message: Message[]) => {
-                if (message[0].controller === 'User' && message[0].method === 'login') {
-                    LoginComponent.loginOperation(<LoginData>message[0].data, router);
-                }
+        this.webSocketService.start('wss://localhost:' + location.port + '/api/v1');
+        let self = this;
+        this.chatChannelService.subscribed.subscribe((data:boolean ) => {
+            self.chatSubscribed = data;
+            if( data ) {
+                this.getAllMessages();
+            }
+        });
+
+        this.chatChannelService.observableData.subscribe((message: Message) => {
+                LoginComponent.loginOperation(<LoginData>message.data, router, globals);
             },
             (err: ErrorEvent) => {
                 console.log('Error: ' + err.message);
-            }
-        );
+            });
     }
 
-    public SendData() {
-        let data = {
-            data: {
-                controller: 'User',
-                method: 'login',
-                values: {
-                    login: this.username,
-                    pass: this.password,
-                }
-            }
-        };
-        this.service.send(data);
+    private getAllMessages():void {
+        // this.chatChannelService.send({ controller:'User', method:'login', values: {}});
+    }
+
+    ngOnDestroy():void {
+        this.chatChannelService.unsubscribe();
+        this.webSocketService.close();
+    }
+
+    private sendMessage():void{
+        this.chatChannelService.send( { controller:'User', method:'login', data: { login: this.username, pass: this.password}} );
+        this.newMessageData = { controller:'User', method:'login', data: {}};
+    }
+
+    private logout() {
+        this.authService.logout();
     }
 }
 

@@ -9,5 +9,4 @@ import { Component } from '@angular/core';
 	selector: 'dashboard-cmp',
 	templateUrl: 'dashboard.component.html'
 })
-
 export class DashboardComponent { }

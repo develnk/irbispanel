@@ -5,7 +5,9 @@ import { RouterModule } from '@angular/router';
 import { LoginComponent } from './login.component';
 
 @NgModule({
-    imports: [FormsModule, CommonModule, RouterModule],
+    imports: [
+        FormsModule,
+    ],
     declarations: [LoginComponent],
     exports: [LoginComponent]
 })

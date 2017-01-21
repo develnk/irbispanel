@@ -1,17 +1,19 @@
-cmake_minimum_required(VERSION 3.4)
+cmake_minimum_required(VERSION 3.6)
 set (PROJECT User)
 project(${PROJECT})
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -fPIC -std=c++14 -I/home/kluch/QProjects/test/")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -Wall -fPIC -std=c++14")
 
 # Find includes in corresponding build directories
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 # Instruct CMake to run moc automatically when needed.
 set(CMAKE_AUTOMOC ON)
 
-set(CMAKE_PREFIX_PATH "/usr/local/Qt-5.6")
+set(CMAKE_CXX_STANDARD 14)
 
-set(REQUIRED_QT_VERSION "5.6")
+set(CMAKE_PREFIX_PATH "/usr/local/Qt-5.7.0")
+
+set(REQUIRED_QT_VERSION "5.7")
 find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Core Sql)
 
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ../../../plugins/${PROJECT})

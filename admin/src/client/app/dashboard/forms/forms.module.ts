@@ -4,9 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FormComponent } from './forms.component';
 
 @NgModule({
-    imports: [
-        RouterModule
-    ],
+    imports: [],
     declarations: [FormComponent],
     exports: [FormComponent]
 })

@@ -1,11 +1,11 @@
 import { Component, OnInit} from '@angular/core';
+let $ = require('../../../../../node_modules/jquery/dist/jquery.min.js');
 
 @Component({
     moduleId: module.id,
 	selector: 'chart-cmp',
 	templateUrl: 'chart.component.html'
 })
-
 export class ChartComponent implements OnInit {
 	ngOnInit() {
         var container:any = $('#container');

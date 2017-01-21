@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { BSElementComponent } from './bsElement.component';
 
 @NgModule({
-    imports: [RouterModule],
+    imports: [],
     declarations: [BSElementComponent],
     exports: [BSElementComponent]
 })

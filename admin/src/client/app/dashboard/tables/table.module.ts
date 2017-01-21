@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { TableComponent } from './table.component';
 
 @NgModule({
-    imports: [RouterModule],
+    imports: [],
     declarations: [TableComponent],
     exports: [TableComponent]
 })

@@ -1,24 +1,27 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormControl, FormGroup} from '@angular/forms';
-import { FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { APP_BASE_HREF } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
+import { CommonModule, APP_BASE_HREF } from '@angular/common';
+import { RouterModule } from "@angular/router";
 import { AppComponent } from './app.component';
-import { routes } from './app.routes';
+import { AppRoutingModule } from './app.routing.module';
 
+import { LoginRoutingModule }      from './login/login-routing.module';
 import { LoginModule } from './login/login.module';
 import { SignupModule } from './signup/signup.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { SharedModule } from './shared/shared.module';
+import { ChatChannelService }   from "./services/chat.channel.service";
+import { WebSocketService } from "./services/websocket.service";
+import { Globals } from './globals';
 
 @NgModule({
 	imports: [
+		CommonModule,
 		BrowserModule,
 		FormsModule,
-		HttpModule,
-		RouterModule.forRoot(routes),
+		LoginRoutingModule,
+		AppRoutingModule,
 		LoginModule,
 		SignupModule,
 		DashboardModule,
@@ -27,10 +30,13 @@ import { SharedModule } from './shared/shared.module';
 	declarations: [AppComponent],
 	providers: [{
 		provide: APP_BASE_HREF,
-		useValue: '<%= APP_BASE %>'
-	}],
+		useValue: '<%= APP_BASE %>',
+	    },
+		ChatChannelService,
+		WebSocketService,
+		Globals
+	],
 	bootstrap: [AppComponent]
 
 })
-
 export class AppModule { }

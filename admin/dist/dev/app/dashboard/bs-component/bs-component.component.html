@@ -19,23 +19,23 @@
 		<div class="card card-block">
 			<h4 class="card-title">Modal</h4>
 			<!-- Large modal -->
-			<button class="btn btn-primary" (click)="lgModal.show()">Large modal</button>
-			<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-			    <div class="modal-dialog">
-			        <div class="modal-content">
-			            <div class="modal-header">
-			                <button type="button" class="close" (click)="lgModal.hide()" aria-label="Close">
-			                    <span aria-hidden="true">&times;</span>
-			                </button>
-			                <h5 class="modal-title">Large modal</h5>
-			            </div>
-			            <div class="modal-body">
-			                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque beatae accusantium maiores, placeat, quasi laborum in vitae accusamus veritatis inventore nulla et quibusdam debitis ipsam consectetur eum, velit ea praesentium!
-			                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum nostrum a velit esse est, voluptatum quam eos ipsum laudantium facere iusto. Provident deleniti non temporibus ex tenetur, assumenda labore eos!
-			            </div>
-			        </div>
-			    </div>
-			</div>
+			<!--<button class="btn btn-primary" (click)="lgModal.show()">Large modal</button>-->
+			<!--<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">-->
+			    <!--<div class="modal-dialog">-->
+			        <!--<div class="modal-content">-->
+			            <!--<div class="modal-header">-->
+			                <!--<button type="button" class="close" (click)="lgModal.hide()" aria-label="Close">-->
+			                    <!--<span aria-hidden="true">&times;</span>-->
+			                <!--</button>-->
+			                <!--<h5 class="modal-title">Large modal</h5>-->
+			            <!--</div>-->
+			            <!--<div class="modal-body">-->
+			                <!--Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque beatae accusantium maiores, placeat, quasi laborum in vitae accusamus veritatis inventore nulla et quibusdam debitis ipsam consectetur eum, velit ea praesentium!-->
+			                <!--Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum nostrum a velit esse est, voluptatum quam eos ipsum laudantium facere iusto. Provident deleniti non temporibus ex tenetur, assumenda labore eos!-->
+			            <!--</div>-->
+			        <!--</div>-->
+			    <!--</div>-->
+			<!--</div>-->
 		</div>
 	</div>
 </div>
@@ -44,11 +44,11 @@
 	<div class="col-lg-12">
 		<div class="card card-block">
 			<h4 class="card-title">Alert</h4>
-			<alert *ngFor="let alert of alerts;let i = index" [type]="alert.type" dismissible="true" (close)="closeAlert(i)">
-				{{ alert?.msg }}
-			</alert>
-			<alert dismissOnTimeout="3000">This alert will dismiss in 3s</alert>
-			<button type="button" class='btn btn-primary' (click)="addAlert()">Add Alert</button>
+			<!--<alert *ngFor="let alert of alerts;let i = index" [type]="alert.type" dismissible="true" (close)="closeAlert(i)">-->
+				<!--{{ alert?.msg }}-->
+			<!--</alert>-->
+			<!--<alert dismissOnTimeout="3000">This alert will dismiss in 3s</alert>-->
+			<!--<button type="button" class='btn btn-primary' (click)="addAlert()">Add Alert</button>-->
 		</div>
 	</div>
 </div>
@@ -174,15 +174,15 @@
 	<div class="col-lg-6" style="margin-top: 10px;">
 		<div class="card card-block">
 			<h4 class="card-title">Default</h4>
-			<pagination [totalItems]="totalItems" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pagination>
-			<pagination [boundaryLinks]="true" [totalItems]="totalItems" [(ngModel)]="currentPage" class="pagination-sm"
-			previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
-			<pagination [directionLinks]="false" [boundaryLinks]="true" [totalItems]="totalItems"
-			[(ngModel)]="currentPage"></pagination>
-			<pagination [directionLinks]="false" [totalItems]="totalItems" [(ngModel)]="currentPage"
-			(numPages)="smallnumPages = $event"></pagination>
-			<pre class="card card-block card-header">The selected page no: {{currentPage}}/{{smallnumPages}}</pre>
-			<button type="button" class="btn btn-info" (click)="setPage(3)">Set current page to: 3</button>
+			<!--<pagination [totalItems]="totalItems" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pagination>-->
+			<!--<pagination [boundaryLinks]="true" [totalItems]="totalItems" [(ngModel)]="currentPage" class="pagination-sm"-->
+			<!--previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>-->
+			<!--<pagination [directionLinks]="false" [boundaryLinks]="true" [totalItems]="totalItems"-->
+			<!--[(ngModel)]="currentPage"></pagination>-->
+			<!--<pagination [directionLinks]="false" [totalItems]="totalItems" [(ngModel)]="currentPage"-->
+			<!--(numPages)="smallnumPages = $event"></pagination>-->
+			<!--<pre class="card card-block card-header">The selected page no: {{currentPage}}/{{smallnumPages}}</pre>-->
+			<!--<button type="button" class="btn btn-info" (click)="setPage(3)">Set current page to: 3</button>-->
 		</div>
 	</div>
 	<div class="col-lg-6" style="margin-top: 10px;">
@@ -190,11 +190,11 @@
 			<h4 class="card-title">Pager</h4>
 			<hr/>
 			<h4>Limit the maximum visible buttons</h4>
-			<pagination [totalItems]="bigTotalItems" [(ngModel)]="bigCurrentPage" [maxSize]="maxSize" class="pagination-sm"
-			[boundaryLinks]="true"></pagination>
-			<pagination [totalItems]="bigTotalItems" [(ngModel)]="bigCurrentPage" [maxSize]="maxSize" class="pagination-sm"
-			[boundaryLinks]="true" [rotate]="false" (numPages)="numPages = $event"></pagination>
-			<pre class="card card-block card-header">Page: {{bigCurrentPage}} / {{numPages}}</pre>
+			<!--<pagination [totalItems]="bigTotalItems" [(ngModel)]="bigCurrentPage" [maxSize]="maxSize" class="pagination-sm"-->
+			<!--[boundaryLinks]="true"></pagination>-->
+			<!--<pagination [totalItems]="bigTotalItems" [(ngModel)]="bigCurrentPage" [maxSize]="maxSize" class="pagination-sm"-->
+			<!--[boundaryLinks]="true" [rotate]="false" (numPages)="numPages = $event"></pagination>-->
+			<!--<pre class="card card-block card-header">Page: {{bigCurrentPage}} / {{numPages}}</pre>-->
 		</div>
 	</div>
 </div>
@@ -293,81 +293,81 @@
 				<button type="button" class="btn btn-primary btn-sm" (click)="tabs[1].disabled = ! tabs[1].disabled">Enable / Disable third tab</button>
 			</p>
 			<hr />
-			<tabset>
-				<tab heading="Static title">Static content</tab>
-				<tab *ngFor="let tabz of tabs"
-				[heading]="tabz.title"
-				[active]="tabz.active"
-				(select)="tabz.active = true"
-				(deselect)="tabz.active = false"
-				[disabled]="tabz.disabled"
-				[removable]="tabz.removable"
-				(removed)="removeTabHandler(tabz)">
-				{{tabz?.content}}
-				</tab>
-				<tab (select)="alertMe()">
-					<template tabHeading>
-						<i class="glyphicon glyphicon-bell"></i> Alert!
-					</template>
-					I've got an HTML heading, and a select callback. Pretty cool!
-				</tab>
-			</tabset>
+			<!--<tabset>-->
+				<!--<tab heading="Static title">Static content</tab>-->
+				<!--<tab *ngFor="let tabz of tabs"-->
+				<!--[heading]="tabz.title"-->
+				<!--[active]="tabz.active"-->
+				<!--(select)="tabz.active = true"-->
+				<!--(deselect)="tabz.active = false"-->
+				<!--[disabled]="tabz.disabled"-->
+				<!--[removable]="tabz.removable"-->
+				<!--(removed)="removeTabHandler(tabz)">-->
+				<!--{{tabz?.content}}-->
+				<!--</tab>-->
+				<!--<tab (select)="alertMe()">-->
+					<!--<template tabHeading>-->
+						<!--<i class="glyphicon glyphicon-bell"></i> Alert!-->
+					<!--</template>-->
+					<!--I've got an HTML heading, and a select callback. Pretty cool!-->
+				<!--</tab>-->
+			<!--</tabset>-->
 		</div>
 	</div>
-	<div class="col-lg-6">
-		<div class="card card-block">
-			<tabset [vertical]="true" type="pills">
-				<tab heading="Vertical 1">Vertical content 1</tab>
-				<tab heading="Vertical 2">Vertical content 2</tab>
-			</tabset>
-			<hr />
-			<p><i>Bootstrap 4 doesn't have justified classes</i></p>
-			<tabset [justified]="true">
-				<tab heading="Justified">Justified content</tab>
-				<tab heading="SJ">Short Labeled Justified content</tab>
-				<tab heading="Long Justified">Long Labeled Justified content</tab>
-			</tabset>
-		</div>
-	</div>
+	<!--<div class="col-lg-6">-->
+		<!--<div class="card card-block">-->
+			<!--<tabset [vertical]="true" type="pills">-->
+				<!--<tab heading="Vertical 1">Vertical content 1</tab>-->
+				<!--<tab heading="Vertical 2">Vertical content 2</tab>-->
+			<!--</tabset>-->
+			<!--<hr />-->
+			<!--<p><i>Bootstrap 4 doesn't have justified classes</i></p>-->
+			<!--<tabset [justified]="true">-->
+				<!--<tab heading="Justified">Justified content</tab>-->
+				<!--<tab heading="SJ">Short Labeled Justified content</tab>-->
+				<!--<tab heading="Long Justified">Long Labeled Justified content</tab>-->
+			<!--</tabset>-->
+		<!--</div>-->
+	<!--</div>-->
 </div>
-<div class="row">
-	<div class="col-sm-12">
-		<div class="card card-block">
-			<div class="card-title">Tooltip</div>
-			<a href="#" class="btn btn-danger" tooltipPlacement="top" tooltip="On the top!">On Top</a>
-			<a href="#" class="btn btn-warning" tooltipPlacement="bottom" tooltip="On the bottom!">On Bottom</a>
-			<a href="#" class="btn btn-success" tooltipPlacement="left" tooltip="On the left!">On Left</a>
-			<a href="#" class="btn btn-info" tooltipPlacement="right" tooltip="On the right!">On Right</a>
-		</div>
-	</div>
-</div>
-<div class="row">
-	<div class="col-sm-12">
-		<div class="card card-block">
-		    <h4>Static arrays</h4>
-		    <pre class="card card-block card-header">Model: {{selected | json}}</pre>
-		    <input [(ngModel)]="selected"
-		           [typeahead]="statesComplex"
-		           (typeaheadOnSelect)="typeaheadOnSelect($event)"
-		           [typeaheadOptionField]="'name'"
-		           class="form-control">
+<!--<div class="row">-->
+	<!--<div class="col-sm-12">-->
+		<!--<div class="card card-block">-->
+			<!--<div class="card-title">Tooltip</div>-->
+			<!--<a href="#" class="btn btn-danger" tooltipPlacement="top" tooltip="On the top!">On Top</a>-->
+			<!--<a href="#" class="btn btn-warning" tooltipPlacement="bottom" tooltip="On the bottom!">On Bottom</a>-->
+			<!--<a href="#" class="btn btn-success" tooltipPlacement="left" tooltip="On the left!">On Left</a>-->
+			<!--<a href="#" class="btn btn-info" tooltipPlacement="right" tooltip="On the right!">On Right</a>-->
+		<!--</div>-->
+	<!--</div>-->
+<!--</div>-->
+<!--<div class="row">-->
+	<!--<div class="col-sm-12">-->
+		<!--<div class="card card-block">-->
+		    <!--<h4>Static arrays</h4>-->
+		    <!--<pre class="card card-block card-header">Model: {{selected | json}}</pre>-->
+		    <!--<input [(ngModel)]="selected"-->
+		           <!--[typeahead]="statesComplex"-->
+		           <!--(typeaheadOnSelect)="typeaheadOnSelect($event)"-->
+		           <!--[typeaheadOptionField]="'name'"-->
+		           <!--class="form-control">-->
 
-		    <h4>Asynchronous results</h4>
-		    <pre class="card card-block card-header">Model: {{asyncSelected | json}}</pre>
-		    <input [(ngModel)]="asyncSelected"
-		           [typeahead]="getAsyncData(getContext())"
-		           (typeaheadLoading)="changeTypeaheadLoading($event)"
-		           (typeaheadNoResults)="changeTypeaheadNoResults($event)"
-		           (typeaheadOnSelect)="typeaheadOnSelect($event)"
-		           [typeaheadOptionsLimit]="7"
-		           placeholder="Locations loaded with timeout"
-		           class="form-control">
-		    <div *ngIf="typeaheadLoading===true">
-		        <i class="glyphicon glyphicon-refresh ng-hide" style=""></i>
-		    </div>
-		    <div *ngIf="typeaheadNoResults===true" class="" style="">
-		        <i class="glyphicon glyphicon-remove"></i> No Results Found
-		    </div>
-		</div>
-	</div>
-</div>
+		    <!--<h4>Asynchronous results</h4>-->
+		    <!--<pre class="card card-block card-header">Model: {{asyncSelected | json}}</pre>-->
+		    <!--<input [(ngModel)]="asyncSelected"-->
+		           <!--[typeahead]="getAsyncData(getContext())"-->
+		           <!--(typeaheadLoading)="changeTypeaheadLoading($event)"-->
+		           <!--(typeaheadNoResults)="changeTypeaheadNoResults($event)"-->
+		           <!--(typeaheadOnSelect)="typeaheadOnSelect($event)"-->
+		           <!--[typeaheadOptionsLimit]="7"-->
+		           <!--placeholder="Locations loaded with timeout"-->
+		           <!--class="form-control">-->
+		    <!--<div *ngIf="typeaheadLoading===true">-->
+		        <!--<i class="glyphicon glyphicon-refresh ng-hide" style=""></i>-->
+		    <!--</div>-->
+		    <!--<div *ngIf="typeaheadNoResults===true" class="" style="">-->
+		        <!--<i class="glyphicon glyphicon-remove"></i> No Results Found-->
+		    <!--</div>-->
+		<!--</div>-->
+	<!--</div>-->
+<!--</div>-->

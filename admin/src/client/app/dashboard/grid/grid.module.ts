@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { GridComponent } from './grid.component';
 
 @NgModule({
-    imports: [RouterModule],
+    imports: [],
     declarations: [GridComponent],
     exports: [GridComponent]
 })

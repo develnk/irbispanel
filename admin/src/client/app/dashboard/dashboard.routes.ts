@@ -1,4 +1,4 @@
-import { Route } from '@angular/router';
+import { Routes } from '@angular/router';
 
 import { HomeRoutes } from './home/index';
 import { ChartRoutes } from './charts/index';
@@ -9,13 +9,14 @@ import { GridRoutes } from './grid/index';
 import { BSComponentRoutes } from './bs-component/index';
 import { BSElementRoutes } from './bs-element/index';
 import { SysInfoRoutes } from "./sysinfo/sysinfo.routes";
+import { DashboardComponent } from './dashboard.component';
+import { AuthGuard } from "../auth-guard.service";
 
-import { DashboardComponent } from './index';
-
-export const DashboardRoutes: Route[] = [
+export const DashboardRoutes: Routes = [
   	{
     	path: 'dashboard',
     	component: DashboardComponent,
+        canLoad: [AuthGuard],
     	children: [
 	    	...HomeRoutes,
 	    	...ChartRoutes,

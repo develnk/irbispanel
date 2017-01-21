@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { DropdownModule } from 'ng2-bootstrap/ng2-bootstrap';
-import { ModalModule } from 'ng2-bootstrap/ng2-bootstrap';
+import { DropdownModule, ModalModule } from 'ng2-bootstrap';
 
 import { HomeModule } from './home/home.module';
 import { ChartModule } from './charts/chart.module';
@@ -12,19 +11,17 @@ import { FormModule } from './forms/forms.module';
 import { GridModule } from './grid/grid.module';
 import { BSComponentModule } from './bs-component/bsComponent.module';
 import { BSElementModule } from './bs-element/bsElement.module';
-
 import { DashboardComponent } from './dashboard.component';
-
-import {TopNavComponent} from '../shared/index';
-import {SidebarComponent} from '../shared/index';
-import {SysInfoModule} from "./sysinfo/sysinfo.module";
+import { TopNavComponent } from '../shared/index';
+import { SidebarComponent } from '../shared/index';
+import { SysInfoModule } from "./sysinfo/sysinfo.module";
 
 
 @NgModule({
     imports: [
         CommonModule,
     	RouterModule,
-    	DropdownModule,
+        DropdownModule.forRoot(),
         ModalModule,
     	HomeModule,
         ChartModule,

@@ -54,7 +54,7 @@ QVariantMap Request::requestData(QString message)
         QString controller_name;
         QString method_name;
         QVariantMap tst = parse_message["data"].toMap();
-        if (tst.contains("controller") && tst.contains("method") && tst.contains("values")) {
+        if (tst.contains("controller") && tst.contains("method") && tst.contains("data")) {
             controller_name = tst["controller"].toString();
             method_name = tst["method"].toString();
             // Check controller name and controller method

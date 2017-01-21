@@ -4,9 +4,8 @@ import { RouterModule } from '@angular/router';
 import { ChartComponent } from './chart.component';
 
 @NgModule({
-    imports: [RouterModule],
+    imports: [],
     declarations: [ChartComponent],
     exports: [ChartComponent]
 })
-
 export class ChartModule { }
