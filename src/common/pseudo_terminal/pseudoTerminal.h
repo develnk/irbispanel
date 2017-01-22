@@ -18,11 +18,12 @@ class pseudoTerminal : public QObject
 public:
     explicit pseudoTerminal(QObject *parent = Q_NULLPTR);
     ~pseudoTerminal();
-    quint32 writeToTerminal(QString);
+    void writeToTerminal(QString);
     QString getData(quint32);
+    quint32 setReqNumber() {request_number++; return request_number;};
 
 public slots:
-    void terminate (qint32 i) {emit finish(i);}
+    void terminate (quint32 i) {emit finish(i);}
 
 private slots:
     void connectObject(void);
@@ -40,7 +41,7 @@ signals:
 private:
     QMap<quint32, QString> buffer;
     QMap<quint32, QString> results;
-    quint32 req_number = 0;
+    quint32 request_number = 0;
 };
 
 #endif //IRBISPANEL_PSEUDOTERMINAL_H

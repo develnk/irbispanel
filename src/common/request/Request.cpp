@@ -1,13 +1,12 @@
 #include <QtWebSockets/qwebsocket.h>
 #include "Request.h"
-#include "../system/System.h"
 
-Request::Request(QWebSocket *pClient, QList<QString> headers, QString message, quint32 connect_key)
+Request::Request(QWebSocket *pClient, QList<QString> headers, QString message, quint32 connect_key, QObject *parent) : QObject(parent)
 {
-    qDebug() << message;
+    QObject::connect(&system, &System::sendResult, this, &Request::readyData, Qt::DirectConnection);
     mClient = pClient;
-    this->req_sesid = requestSesId(message);
-    this->ses_name = session.sessionName(headers);
+    req_sesid = requestSesId(message);
+    ses_name = session.sessionName(headers);
     QVariantMap data = requestData(message);
     user = session.getUser(connect_key, ses_name, req_sesid);
 
@@ -16,12 +15,11 @@ Request::Request(QWebSocket *pClient, QList<QString> headers, QString message, q
 
     // Execute request.
     if (data["controller"].toString() == "system") {
-        System *system = new System();
-        this->response = system->execute(connect_key, ses_name, req_sesid, data);
+        system.execute(connect_key, ses_name, req_sesid, data);
     }
     else if (helper.pluginMap.contains(data["controller"].toString())) {
         RequestInterface *object = helper.pluginMap[data["controller"].toString()];
-        this->response = object->execute(connect_key, ses_name, req_sesid, data);
+        response = object->execute(connect_key, ses_name, req_sesid, data);
     }
 }
 
@@ -29,8 +27,8 @@ QByteArray Request::result()
 {
     QByteArray result;
     // If have answer then serialize it to json object and send to angular application
-    if (this->response.count() >= 1 ) {
-        result = helper.response(this->response);
+    if (response.count() >= 1 ) {
+        result = helper.response(response);
     }
 
     return result;
@@ -84,4 +82,9 @@ QVariantMap Request::requestData(QString message)
 Request::~Request()
 {
 
+}
+void Request::readyData(QJsonObject data, QString method_name)
+{
+    response = data;
+    emit sendToWebsocket(mClient, result());
 }

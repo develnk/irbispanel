@@ -1,20 +1,5 @@
 <div class="container-fluid">
     <h2 class="text-muted">Dashboard <small>Statistics Overview</small></h2>
-    <div class="row">
-        <div class="col-md-12">
-            <!--<carousel [interval]="myInterval" [noWrap]="noWrapSlides">-->
-                <!--<slide *ngFor="let slidez of slides;let index=index" [active]="slidez.active">-->
-                    <!--<img [src]="slidez.image">-->
-                    <!--<div class="carousel-caption">-->
-                        <!--<h4>Slide {{index}}</h4>-->
-                        <!--<p>{{slidez.text}}</p>-->
-                    <!--</div>-->
-                <!--</slide>-->
-                <!--<i class="fa fa-chevron-left left carousel-control"></i>-->
-                <!--<i class="fa fa-chevron-right right carousel-control"></i>-->
-            <!--</carousel>-->
-        </div>
-    </div>
     <hr>
     <div class="row">
         <div class="col-xl-3 col-lg-6">
@@ -106,37 +91,5 @@
             </div>
         </div>
     </div>
-    <!--<alert *ngFor="let alert of alerts; let i = index" [type]="alert.type" dismissible="true" (close)="closeAlert(i)">-->
-        <!--{{ alert?.msg }}-->
-    <!--</alert>-->
-    <!--<div class="row">-->
-        <!--<div class="col-lg-8">-->
-        <!--<div class="card card-default">-->
-        <!--<div class="card-header">-->
-                    <!--<i class="fa fa-clock-o fa-fw"></i> Responsive Timeline-->
-                <!--</div>-->
-                <!--&lt;!&ndash; /.card-header &ndash;&gt;-->
-                <!--<timeline-cmp></timeline-cmp>-->
-                <!--&lt;!&ndash; /.card-body &ndash;&gt;-->
-            <!--</div>-->
-            <!--&lt;!&ndash; /.card &ndash;&gt;-->
-        <!--</div>-->
-        <!--&lt;!&ndash; /.col-lg-8 &ndash;&gt;-->
-        <!--<div class="col-lg-4">-->
-        <!--<div class="card card-default">-->
-        <!--<div class="card-header">-->
-        <!--<i class="fa fa-bell fa-fw"></i> Notifications card-->
-                <!--</div>-->
-                <!--&lt;!&ndash; /.card-header &ndash;&gt;-->
-                <!--<notifications-cmp></notifications-cmp>-->
-                <!--&lt;!&ndash; /.card-body &ndash;&gt;-->
-            <!--</div>-->
-            <!--&lt;!&ndash; /.card &ndash;&gt;-->
-
-            <!--<chat-cmp></chat-cmp>-->
-            <!--&lt;!&ndash; /.card .chat-card &ndash;&gt;-->
-        <!--</div>-->
-        <!--&lt;!&ndash; /.col-lg-4 &ndash;&gt;-->
-    <!--</div>-->
-
+    <chart [options]="options"></chart>
 </div>

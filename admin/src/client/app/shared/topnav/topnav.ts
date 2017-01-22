@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Globals } from "../../globals";
+import { LoginData } from "../../login/login.component";
 let $ = require('../../../../../node_modules/jquery/dist/jquery.min.js');
 
 @Component({
@@ -7,6 +9,20 @@ let $ = require('../../../../../node_modules/jquery/dist/jquery.min.js');
     templateUrl: 'topnav.html',
 })
 export class TopNavComponent {
+	private user: LoginData;
+
+	constructor(private globals: Globals) {
+		this.user = globals.USER;
+		if (!this.user || !this.user.name) {
+			this.user = <LoginData> {
+				name: 'Anonymous',
+				ses_id: '',
+				mail: '',
+				status: 1
+			}
+		}
+	}
+
 	changeTheme(color: string): void {
 		let link: any = $('<link>');
 		link

@@ -1,9 +1,9 @@
 {
-  "name": "angular2-app",
-  "version": "0.0.0",
-  "description": "Modular seed project for Angular 2 apps with fast, statically typed build",
+  "name": "irbispanel-app",
+  "version": "0.0.2",
+  "description": "Administation panel for linux system.",
   "repository": {
-    "url": "https://github.com/nitinkumarmishra/angular2-app"
+    "url": "https://github.com/develnk/irbispanel"
   },
   "scripts": {
     "build.dev": "gulp build.dev --color --env-config dev",
@@ -135,6 +135,7 @@
     "@angular/router": "^3.4.4",
     "@types/core-js": "^0.9.35",
     "@types/express": "^4.0.34",
+    "angular2-highcharts": "^0.4.1",
     "core-js": "^2.4.1",
     "es6-module-loader": "^0.17.8",
     "express": "^4.14.0",

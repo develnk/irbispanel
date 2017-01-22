@@ -2,7 +2,6 @@
 #include "QtWebSockets/qwebsocket.h"
 #include <QtNetwork/QSslKey>
 #include <QtCore/QFile>
-#include <QDebug>
 
 #include "websocket.h"
 #include "src/common/request/Request.h"
@@ -51,17 +50,17 @@ void WebSocket::onNewConnection()
 {
     QWebSocket *pSocket = m_pWebSocketServer->nextPendingConnection();
     QList<QString> headers;
-    QMap<QWebSocket *, QList<QString>> m_request;
+    QMap<QWebSocket*, QList<QString>> m_request;
     headers << pSocket->request().rawHeader(QByteArray::fromStdString("user-agent")) << pSocket->request().rawHeader(QByteArray::fromStdString("x-real-ip"));
     m_request.insert(pSocket, headers);
     quint32 id = ++lastId;
     m_clients.insert(id, m_request);
 
     connect(pSocket, &QWebSocket::textMessageReceived, this, [&, id](const QString message) {
-        this->processMessage(message, lastId, pOp);
+        processMessage(message, lastId, pOp);
     });
     connect(pSocket, &QWebSocket::disconnected, this, [&, id]() {
-        this->socketDisconnected(lastId);
+        socketDisconnected(lastId);
     });
 }
 
@@ -72,10 +71,7 @@ void WebSocket::processMessage(QString message, quint32 id, QMap<QString, QStrin
         QWebSocket *pClient = qobject_cast<QWebSocket *>(it.key());
         QList<QString> headers = it.value();
         Request *request = new Request(pClient, headers, message, id);
-        QByteArray result = request->result();
-        if (result.size() > 1) {
-            pClient->sendTextMessage(QString::fromLatin1(result));
-        }
+        connect(request, &Request::sendToWebsocket, this, &WebSocket::wsSend, Qt::DirectConnection);
     }
 }
 
@@ -93,4 +89,11 @@ void WebSocket::socketDisconnected(quint32 id)
 void WebSocket::onSslErrors(const QList<QSslError> &)
 {
     qDebug() << "Ssl errors occurred";
+}
+
+void WebSocket::wsSend(QWebSocket *pClient, QByteArray result)
+{
+    if (result.size() > 1) {
+        pClient->sendTextMessage(QString::fromLatin1(result));
+    }
 }

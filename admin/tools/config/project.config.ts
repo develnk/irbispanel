@@ -24,9 +24,6 @@ export class ProjectConfig extends SeedConfig {
       ...this.NPM_DEPENDENCIES,
       { src: 'font-awesome/css/font-awesome.css', inject: true},
       { src: 'jquery/dist/jquery.js', inject: 'libs' },
-      { src: 'highcharts/highstock', inject: 'libs' },
-      { src: 'highcharts/modules/map', inject: 'libs' },
-      { src: 'highcharts/modules/data', inject: 'libs' },
       { src: 'ng2-bootstrap/*.js', inject: 'libs'},
       { src: 'moment/moment.js', inject: 'libs'},
       // {src: 'lodash/lodash.min.js', inject: 'libs'},
@@ -38,13 +35,11 @@ export class ProjectConfig extends SeedConfig {
         name:'ng2-bootstrap',
         path:'node_modules/ng2-bootstrap/bundles/ng2-bootstrap.umd.min.js'
       },
-
       // required for prod build
       {
         name:'ng2-bootstrap/*',
         path:'node_modules/ng2-bootstrap/bundles/ng2-bootstrap.umd.min.js'
       },
-
       // mandatory dependency for ng2-bootstrap datepicker
       {
         name:'moment',
@@ -57,6 +52,26 @@ export class ProjectConfig extends SeedConfig {
     ];
 
     this.addPackagesBundles(additionalPackages);
+
+    this.SYSTEM_CONFIG_DEV = {
+      ...this.SYSTEM_CONFIG_DEV,
+      path: {
+        'angular2-highcharts': 'node_modules/angular2-highcharts/',
+        'highcharts/highstock.src': 'node_modules/highcharts/'
+      },
+      packages: {
+        'angular2-highcharts': {
+          main: './index.js',
+          defaultExtension: 'js'
+        },
+        'highcharts': {
+          // NOTE: You should set './highcharts.src.js' here
+          // if you are not going to use <chart type="StockChart"
+          main: './highstock.src.js',
+          defaultExtension: 'js'
+        }
+      }
+    };
 
     // Add `local` third-party libraries to be injected/bundled.
     this.APP_ASSETS = [

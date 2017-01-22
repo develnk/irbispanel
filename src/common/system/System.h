@@ -5,20 +5,31 @@
 #include <QStringList>
 #include <QMap>
 #include <QObject>
-#include <QDebug>
 #include <QMetaEnum>
+#include "SystemInfo.h"
 
-class System
+
+class System : public QObject
 {
+    Q_OBJECT
+
 public:
-    explicit System();
+    explicit System(QObject *parent = Q_NULLPTR);
     ~System();
     QStringList getPermissions();
-    QJsonObject execute(quint32, QString, QString, QVariantMap);
+    void execute(quint32, QString, QString, QVariantMap);
     QStringList operations();
+
+signals:
+    void sendResult(QJsonObject, QString);
+
+private slots:
+    void readyData(QJsonObject, QString);
 
 private:
     QStringList perms;
+    SystemInfo info;
+    QJsonObject result;
 };
 
 

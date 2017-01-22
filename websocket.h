@@ -14,11 +14,15 @@ QT_FORWARD_DECLARE_CLASS(QWebSocket)
 class WebSocket : public QObject
 {
   Q_OBJECT
+
 public:
     explicit WebSocket(quint16 port, QObject *parent = Q_NULLPTR);
     ~WebSocket();
 
-private Q_SLOTS:
+public slots:
+    void wsSend(QWebSocket*, QByteArray);
+
+private slots:
     void onNewConnection();
     void onSslErrors(const QList<QSslError> &errors);
 

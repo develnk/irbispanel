@@ -29,17 +29,16 @@ void pseudoTerminal::connectObject(void)
     }
 }
 
-quint32 pseudoTerminal::writeToTerminal(QString txt)
+void pseudoTerminal::writeToTerminal(QString txt)
 {
-    results.insert(req_number++, "");
+
+    results.insert(request_number, QString(""));
     if (_obj.objectIsCreated()) {
-        emit sendToTerminal(req_number, txt);
+        emit sendToTerminal(request_number, txt);
     }
     else {
-        buffer[req_number] = txt;
+        buffer[request_number] = txt;
     }
-
-    return req_number;
 }
 
 QString pseudoTerminal::getData(quint32 r_number)
