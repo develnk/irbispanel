@@ -14,22 +14,34 @@ OperationsTerminal::OperationsTerminal(QObject *parent) :  QObject(parent)
         qDebug() << "Expect failed to initialize.";
         exit(0);
     }
-
-    QObject::connect(this, &OperationsTerminal::endExecute, this, &OperationsTerminal::readTerminal);
 }
 
-void OperationsTerminal::readTerminal(quint32 req_number)
+void OperationsTerminal::readTerminal()
 {
     QString logs(exp_buffer);
     // Read log by line.
     // qDebug() << results.readLine(0);
     qDebug() << exp_buffer;
-    emit dataReady(req_number, &logs);
+    emit dataReady(&logs);
+    if (!timer_flag) {
+        emit finished();
+    }
 }
 
-void OperationsTerminal::writeTerminal(quint32 req_number, QString cmd)
+void OperationsTerminal::process()
 {
-    started = true;
+    if (timer_flag) {
+        timer = new QTimer();
+        connect(timer, &QTimer::timeout, this, &OperationsTerminal::execCommand);
+        timer->start(1000);
+    }
+    else {
+        execCommand();
+    }
+}
+
+void OperationsTerminal::execCommand()
+{
     // Open a shell with a pipe
     file_descriptor = exp_popen(cmd.toUtf8().data());
 
@@ -40,11 +52,9 @@ void OperationsTerminal::writeTerminal(quint32 req_number, QString cmd)
                          exp_end)) {
         case command_failed:
             qDebug() << "Could not create directory";
-            success = false;
             break;
         case command_not_found:
             qDebug() << "Command not found";
-            success = false;
             break;
         case prompt:
             fprintf(file_descriptor, "%s\r", "exit");
@@ -54,23 +64,21 @@ void OperationsTerminal::writeTerminal(quint32 req_number, QString cmd)
             break;
     }
 
-    emit endExecute(req_number);
+    readTerminal();
 }
 
-void OperationsTerminal::buffer(QMap<quint32, QString> buff)
+void OperationsTerminal::setCommand(QString cmd)
 {
-    qDebug() << "Buff" << buff.values();
-    if (buff.count()) {
-        QMapIterator<quint32, QString> i(buff);
-        while (i.hasNext()) {
-            i.next();
-            qDebug() << "From Buffer" << i.value();
-            writeTerminal(i.key(), i.value());
-        }
-    }
+    this->cmd = cmd;
 }
 
+void OperationsTerminal::setTimer(bool timer)
+{
+    this->timer_flag = timer;
+}
 OperationsTerminal::~OperationsTerminal()
 {
-
+//    delete(timer);
+//    delete(logFile);
+//    delete(file_descriptor);
 }

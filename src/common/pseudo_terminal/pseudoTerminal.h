@@ -13,35 +13,33 @@ class OperationsTerminal;
 class pseudoTerminal : public QObject
 {
     Q_OBJECT
-    ThreadedObject <OperationsTerminal> _obj;
+//    ThreadedObject <OperationsTerminal> _obj;
 
 public:
     explicit pseudoTerminal(QObject *parent = Q_NULLPTR);
     ~pseudoTerminal();
-    void writeToTerminal(QString);
-    QString getData(quint32);
-    quint32 setReqNumber() {request_number++; return request_number;};
-
-public slots:
-    void terminate (quint32 i) {emit finish(i);}
+    void writeToTerminal(QString, bool);
+    QString getData();
 
 private slots:
-    void connectObject(void);
-    void readTerminal(quint32 req_number, QString *result) {
-        results[req_number] = *result;
-        emit executed(req_number);
+//    void connectObject(void);
+    void readTerminal(QString *result) {
+//        results[req_number] = *result;
+        this->result = result;
+        emit executed();
     }
+    void errorString(QString);
 
 signals:
-    void finish(quint32);
+    void finish();
     void sendToTerminal(quint32, QString);
     void sendBufferToTerminal(QMap<quint32, QString>);
-    void executed(quint32);
+    void executed();
 
 private:
-    QMap<quint32, QString> buffer;
-    QMap<quint32, QString> results;
-    quint32 request_number = 0;
+    QString *result;
+    QThread *thread;
+    OperationsTerminal *operationsTerminal;
 };
 
 #endif //IRBISPANEL_PSEUDOTERMINAL_H

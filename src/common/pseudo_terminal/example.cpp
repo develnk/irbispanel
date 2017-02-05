@@ -94,9 +94,7 @@ private slots:
     {
         bool res;                    // признак успешности установки сигналов-слотов
         res = QObject::connect(this, &App::finish, _obj, &Operation::terminate);
-        Q_ASSERT_X (res,
-                    "connect",
-                    "connection is not established");    // закрытие этого объекта закрывает объект в потоке
+        Q_ASSERT_X (res, "connect", "connection is not established");    // закрытие этого объекта закрывает объект в потоке
         res = QObject::connect(this, &App::startAction, _obj, &Operation::doAction);
         Q_ASSERT_X (res, "connect", "connection is not established");    // установка сигнала запуска действия
         res = QObject::connect(_obj, &Operation::finished, this, &App::finish);

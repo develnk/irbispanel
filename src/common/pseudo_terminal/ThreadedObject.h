@@ -16,19 +16,15 @@ protected:
     T *_obj;
 
 public:
-    ThreadedObject(QObject *parent = 0)
-        : ThreadedObjectBase(parent), _obj(0)
-    {}
+    ThreadedObject(QObject *parent = 0) : ThreadedObjectBase(parent), _obj(0) {}
 
     // Run new thread.
-    void starting(const char *FinishedSignal = 0, const char *TerminateSlot = 0, QThread::Priority Priority = QThread::InheritPriority,  bool ToDeleteLaterThread = true, bool ToDeleteLaterObject = true)
+    void starting(const char *FinishedSignal = 0, const char *TerminateSlot = 0, QThread::Priority Priority = QThread::InheritPriority)
     {
         // Remembering signal name: "ending works object".
         _finished_signal = FinishedSignal;
         // Remembering slot name: "end of work".
         _terminate_slot = TerminateSlot;
-        // Remembering installing deferred object deletion.
-        _to_delete_later_object = ToDeleteLaterObject;
         // Creating object.
         start(Priority);
     }

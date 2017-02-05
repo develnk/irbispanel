@@ -11,9 +11,9 @@ set(CMAKE_AUTOMOC ON)
 
 set(CMAKE_CXX_STANDARD 14)
 
-set(CMAKE_PREFIX_PATH "/usr/local/Qt-5.7.0")
+set(CMAKE_PREFIX_PATH "/usr/local/Qt-5.8.0")
 
-set(REQUIRED_QT_VERSION "5.7")
+set(REQUIRED_QT_VERSION "5.8")
 find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Core WebSockets Sql)
 #include_directories(${Qt5Widgets_INCLUDE_DIRS})
 #include_directories(${Qt5WebSockets_INCLUDE_DIRS})

@@ -7,6 +7,7 @@
 #include <QtNetwork/QNetworkRequest>
 #include <QSettings>
 #include <QSignalMapper>
+#include "src/common/request/Request.h"
 
 QT_FORWARD_DECLARE_CLASS(QWebSocketServer)
 QT_FORWARD_DECLARE_CLASS(QWebSocket)
@@ -20,7 +21,7 @@ public:
     ~WebSocket();
 
 public slots:
-    void wsSend(QWebSocket*, QByteArray);
+    void wsSend(QWebSocket*, QByteArray, Request*);
 
 private slots:
     void onNewConnection();
@@ -31,7 +32,7 @@ private:
     QMap<quint32, QMap<QWebSocket *, QList<QString>>> m_clients;
     void processMessage(QString, quint32, QMap<QString, QStringList>);
     void socketDisconnected(quint32);
-    quint32 lastId;
+    quint32 connect_key = 0;
     QMap<QString, QStringList> pOp;
 };
 

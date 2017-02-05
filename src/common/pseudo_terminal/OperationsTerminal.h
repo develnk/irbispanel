@@ -12,6 +12,7 @@
 #include <expect_tcl.h>
 #include <expect.h>
 #include <wait.h>
+
 using namespace std;
 
 class OperationsTerminal : public QObject
@@ -20,27 +21,30 @@ class OperationsTerminal : public QObject
 
 public:
     OperationsTerminal(QObject *parent = Q_NULLPTR);
-    ~OperationsTerminal(void);
+    ~OperationsTerminal();
+    void setCommand(QString);
+    void setTimer(bool);
 
 public slots:
-    void terminate(void){emit finish();};
-    void writeTerminal(quint32, QString);
-    void buffer(QMap<quint32, QString>);
+//    void terminate(void){emit finished();};
+//    void writeTerminal(quint32, QString);
+//    void buffer(QMap<quint32, QString>);
+    void process();
 
 signals:
-    void endExecute(quint32);
-    void dataReady(quint32, QString *txt);
-    void finish(void);
+    void dataReady(QString *txt);
+    void finished();
+    void error(QString err);
 
 private:
-    void readTerminal(quint32);
+    void readTerminal();
+    void execCommand();
     FILE *file_descriptor;
     FILE *logFile;
     enum types { denied, invalid, command_not_found, command_failed, prompt };
-    bool success = true;
-    bool finished = false;
-    bool started = false;
-
+    QString cmd;
+    bool timer_flag;
+    QTimer *timer;
 };
 
 

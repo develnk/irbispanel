@@ -3,7 +3,6 @@
 
 Request::Request(QWebSocket *pClient, QList<QString> headers, QString message, quint32 connect_key, QObject *parent) : QObject(parent)
 {
-    QObject::connect(&system, &System::sendResult, this, &Request::readyData, Qt::DirectConnection);
     mClient = pClient;
     req_sesid = requestSesId(message);
     ses_name = session.sessionName(headers);
@@ -15,10 +14,11 @@ Request::Request(QWebSocket *pClient, QList<QString> headers, QString message, q
 
     // Execute request.
     if (data["controller"].toString() == "system") {
+        connect(&system, &System::sendResult, this, &Request::readyData, Qt::DirectConnection);
         system.execute(connect_key, ses_name, req_sesid, data);
     }
     else if (helper.pluginMap.contains(data["controller"].toString())) {
-        RequestInterface *object = helper.pluginMap[data["controller"].toString()];
+        object = helper.pluginMap[data["controller"].toString()];
         response = object->execute(connect_key, ses_name, req_sesid, data);
     }
 }
@@ -81,10 +81,14 @@ QVariantMap Request::requestData(QString message)
 
 Request::~Request()
 {
-
+//    delete(mClient);
+//    delete(object);
+//    system.deleteLater();
 }
+
 void Request::readyData(QJsonObject data, QString method_name)
 {
     response = data;
-    emit sendToWebsocket(mClient, result());
+    QByteArray res = result();
+    emit sendToWebsocket(mClient, res, this);
 }

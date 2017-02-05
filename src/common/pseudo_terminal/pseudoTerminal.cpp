@@ -2,48 +2,37 @@
 
 pseudoTerminal::pseudoTerminal(QObject *parent) :  QObject(parent)
 {
-    bool res;
-    res = QObject::connect(&_obj, SIGNAL(objectIsReady()), this, SLOT(connectObject()), Qt::DirectConnection);
-    Q_ASSERT_X (res, "connect", "connection is not established");
-    _obj.starting(SIGNAL(finish()), SLOT(terminate()), QThread::HighPriority);
+    thread = new QThread;
+    operationsTerminal = new OperationsTerminal();
 }
 
 pseudoTerminal::~pseudoTerminal(void)
 {
-
+    thread->terminate();
+    delete(thread);
+    delete(operationsTerminal);
 }
 
-void pseudoTerminal::connectObject(void)
+void pseudoTerminal::writeToTerminal(QString txt, bool timer = false)
 {
-    qDebug() << "Connect";
-    bool res;
-    QObject::connect(this, &pseudoTerminal::finish, _obj, &OperationsTerminal::endExecute, Qt::DirectConnection);
-    res = QObject::connect(this, &pseudoTerminal::sendToTerminal, _obj, &OperationsTerminal::writeTerminal, Qt::DirectConnection);
-    Q_ASSERT_X (res, "connect", "connection is not established");
-    QObject::connect(_obj, &OperationsTerminal::dataReady, this, &pseudoTerminal::readTerminal, Qt::DirectConnection);
-    //QObject::connect(_obj, &OperationsTerminal::writeTerminal, this, &pseudoTerminal::sendToTerminal);
-    QObject::connect(this, &pseudoTerminal::sendBufferToTerminal, _obj, &OperationsTerminal::buffer, Qt::DirectConnection);
-
-    if (buffer.count()) {
-        emit sendBufferToTerminal(buffer);
-    }
+    operationsTerminal->setCommand(txt);
+    operationsTerminal->setTimer(timer);
+    operationsTerminal->moveToThread(thread);
+    connect(operationsTerminal, &OperationsTerminal::error, this, &pseudoTerminal::errorString);
+    connect(operationsTerminal, &OperationsTerminal::dataReady, this, &pseudoTerminal::readTerminal, Qt::DirectConnection);
+    connect(thread, SIGNAL(started()), operationsTerminal, SLOT(process()));
+    connect(operationsTerminal, SIGNAL(finished()), thread, SLOT(quit()));
+    connect(operationsTerminal, SIGNAL(finished()), operationsTerminal, SLOT(deleteLater()));
+    connect(thread, SIGNAL(finished()), thread, SLOT(deleteLater()));
+    thread->start();
 }
 
-void pseudoTerminal::writeToTerminal(QString txt)
+QString pseudoTerminal::getData()
 {
-
-    results.insert(request_number, QString(""));
-    if (_obj.objectIsCreated()) {
-        emit sendToTerminal(request_number, txt);
-    }
-    else {
-        buffer[request_number] = txt;
-    }
+    return *result;
 }
 
-QString pseudoTerminal::getData(quint32 r_number)
+void pseudoTerminal::errorString(QString error)
 {
-    QString result = results[r_number];
-    results.remove(r_number);
-    return result;
+    qDebug() << error;
 }

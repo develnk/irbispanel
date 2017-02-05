@@ -4,7 +4,6 @@
 #include <QtCore/QFile>
 
 #include "websocket.h"
-#include "src/common/request/Request.h"
 
 QT_USE_NAMESPACE
 
@@ -33,7 +32,6 @@ WebSocket::WebSocket(quint16 port, QObject *parent)
     m_pWebSocketServer->setSslConfiguration(sslConfiguration);
 
     if (m_pWebSocketServer->listen(QHostAddress::Any, port)) {
-        lastId = 0;
         qDebug() << "Admin Server listening on port" << port;
         connect(m_pWebSocketServer, &QWebSocketServer::newConnection, this, &WebSocket::onNewConnection);
         connect(m_pWebSocketServer, &QWebSocketServer::sslErrors, this, &WebSocket::onSslErrors);
@@ -43,7 +41,7 @@ WebSocket::WebSocket(quint16 port, QObject *parent)
 WebSocket::~WebSocket()
 {
     m_pWebSocketServer->close();
-    m_clients.clear();
+    delete(&m_clients);
 }
 
 void WebSocket::onNewConnection()
@@ -53,35 +51,35 @@ void WebSocket::onNewConnection()
     QMap<QWebSocket*, QList<QString>> m_request;
     headers << pSocket->request().rawHeader(QByteArray::fromStdString("user-agent")) << pSocket->request().rawHeader(QByteArray::fromStdString("x-real-ip"));
     m_request.insert(pSocket, headers);
-    quint32 id = ++lastId;
-    m_clients.insert(id, m_request);
+    connect_key++;
+    m_clients.insert(connect_key, m_request);
 
-    connect(pSocket, &QWebSocket::textMessageReceived, this, [&, id](const QString message) {
-        processMessage(message, lastId, pOp);
+    connect(pSocket, &QWebSocket::textMessageReceived, this, [&](const QString message) {
+        processMessage(message, connect_key, pOp);
     });
-    connect(pSocket, &QWebSocket::disconnected, this, [&, id]() {
-        socketDisconnected(lastId);
+    connect(pSocket, &QWebSocket::disconnected, this, [&]() {
+        socketDisconnected(connect_key);
     });
 }
 
-void WebSocket::processMessage(QString message, quint32 id, QMap<QString, QStringList> pluginOp)
+void WebSocket::processMessage(QString message, quint32 connect_key_id, QMap<QString, QStringList> pluginOp)
 {
-    if (m_clients.contains(id)) {
-        QMap<QWebSocket *, QList<QString>>::iterator it = m_clients[id].begin();
+    if (m_clients.contains(connect_key_id)) {
+        QMap<QWebSocket *, QList<QString>>::iterator it = m_clients[connect_key_id].begin();
         QWebSocket *pClient = qobject_cast<QWebSocket *>(it.key());
         QList<QString> headers = it.value();
-        Request *request = new Request(pClient, headers, message, id);
+        Request *request = new Request(pClient, headers, message, connect_key_id);
         connect(request, &Request::sendToWebsocket, this, &WebSocket::wsSend, Qt::DirectConnection);
     }
 }
 
-void WebSocket::socketDisconnected(quint32 id)
+void WebSocket::socketDisconnected(quint32 connect_key_id)
 {
-    if (m_clients.contains(id)) {
-        QMap<QWebSocket *, QList<QString>>::iterator it = m_clients[id].begin();
+    if (m_clients.contains(connect_key_id)) {
+        QMap<QWebSocket *, QList<QString>>::iterator it = m_clients[connect_key_id].begin();
         QWebSocket *pClient = qobject_cast<QWebSocket *>(it.key());
         pClient->deleteLater();
-        m_clients.remove(id);
+        m_clients.remove(connect_key_id);
     }
 }
 
@@ -91,7 +89,7 @@ void WebSocket::onSslErrors(const QList<QSslError> &)
     qDebug() << "Ssl errors occurred";
 }
 
-void WebSocket::wsSend(QWebSocket *pClient, QByteArray result)
+void WebSocket::wsSend(QWebSocket *pClient, QByteArray result, Request *request)
 {
     if (result.size() > 1) {
         pClient->sendTextMessage(QString::fromLatin1(result));

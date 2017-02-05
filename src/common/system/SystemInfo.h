@@ -8,24 +8,22 @@
 
 class SystemInfo : public QObject {
     Q_OBJECT
-    pseudoTerminal terminal;
 
 public:
     explicit SystemInfo(QObject *parent = Q_NULLPTR);
     ~SystemInfo();
-    QString sys_name();
-    QString cpu_data();
     QJsonObject cpu_load(QString);
     void execute_cmd(QString, QVariantMap);
 
 public slots:
-    void readyData(quint32);
+    void readyData();
 
 signals:
     void endExecute(QJsonObject, QString);
 
 private:
-    QMap<quint32, QVariantMap> exec_commands;
+    QVariantMap exec_command;
+    pseudoTerminal *terminal;
 };
 
 

@@ -29,7 +29,6 @@ private slots:
 private:
     QStringList perms;
     SystemInfo info;
-    QJsonObject result;
 };
 
 

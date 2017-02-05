@@ -3,26 +3,7 @@
 
 SystemInfo::SystemInfo(QObject *parent) : QObject(parent)
 {
-    QObject::connect(&terminal, &pseudoTerminal::executed, this, &SystemInfo::readyData, Qt::DirectConnection);
-}
 
-QString SystemInfo::sys_name()
-{
-    QString program = QString("uname");
-    QStringList arguments;
-    arguments << "-a";
-    Process *process = new Process(&program, &arguments);
-    QString result(process->execute());
-    return result;
-}
-
-QString SystemInfo::cpu_data()
-{
-    QString program = QString("lscpu");
-    QStringList arguments;
-    Process *process = new Process(&program, &arguments);
-    QString result(process->execute());
-    return result;
 }
 
 QJsonObject SystemInfo::cpu_load(QString request)
@@ -45,37 +26,48 @@ QJsonObject SystemInfo::cpu_load(QString request)
     return object;
 }
 
-void SystemInfo::readyData(quint32 r_number)
+void SystemInfo::readyData()
 {
     QString method_name;
     QJsonObject result;
     QJsonObject data;
-    QString request(terminal.getData(r_number));
-    if (exec_commands.contains(r_number)) {
-        method_name = exec_commands.value(r_number)["method"].toString();
-        if (method_name == "get_cpu_load_online") {
-            data = cpu_load(request);
-        }
+    QString request(terminal->getData());
+    method_name = exec_command["method"].toString();
+    if (method_name == "get_cpu_load_online") {
+        data = cpu_load(request);
+    }
+    else {
+        data.insert(method_name, {{request}});
     }
 
     result.insert("method", method_name);
-    result.insert("controller", exec_commands.value(r_number)["controller"].toString());
+    result.insert("controller", exec_command["controller"].toString());
     result.insert("data", data);
-    exec_commands.remove(r_number);
+    exec_command.clear();
     emit endExecute(result, method_name);
 }
 
 SystemInfo::~SystemInfo()
 {
-
+    delete(&terminal);
 }
 
 void SystemInfo::execute_cmd(QString cmd_name, QVariantMap data)
 {
+    terminal = new pseudoTerminal();
+    connect(terminal, &pseudoTerminal::executed, this, &SystemInfo::readyData, Qt::DirectConnection);
+    this->exec_command = data;
+
     if (cmd_name == "cpu_load") {
         QString cmd("cat /proc/stat");
-        quint32 r_number = terminal.setReqNumber();
-        exec_commands.insert(r_number, data);
-        terminal.writeToTerminal(cmd);
+        terminal->writeToTerminal(cmd, true);
+    }
+    else if(cmd_name == "cpu_info") {
+        QString cmd("lscpu");
+        terminal->writeToTerminal(cmd, false);
+    }
+    else if(cmd_name == "sys_name") {
+        QString cmd("uname -a");
+        terminal->writeToTerminal(cmd, false);
     }
 }

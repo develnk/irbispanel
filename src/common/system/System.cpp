@@ -6,7 +6,7 @@ System::System(QObject *parent) : QObject(parent)
 {
     // Set module permissions.
     perms.append("get system info");
-    QObject::connect(&info, &SystemInfo::endExecute, this, &System::readyData, Qt::DirectConnection);
+    connect(&info, &SystemInfo::endExecute, this, &System::readyData, Qt::DirectConnection);
 }
 
 QStringList System::getPermissions()
@@ -25,25 +25,23 @@ QStringList System::operations()
 
 void System::execute(quint32 key, QString ses_name, QString ses_id, QVariantMap data)
 {
-
-
     if (data["method"].toString() == "getsysinfo") {
-        result.insert("data", info.sys_name());
+        info.execute_cmd("sys_name", data);
     }
     else if (data["method"].toString() == "getcpu") {
-        result.insert("data", info.cpu_data());
+        info.execute_cmd("cpu_info", data);
     }
     else if (data["method"].toString() == "get_cpu_load_online") {
         info.execute_cmd("cpu_load", data);
-        //result.insert("data");
     }
 }
 
 
 System::~System()
 {
-
+    delete(&info);
 }
+
 void System::readyData(QJsonObject result, QString method_name)
 {
     emit sendResult(result, method_name);

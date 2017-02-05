@@ -36,13 +36,6 @@ protected:
             Q_ASSERT_X (res, "connect", "connection is not established");
             // Before work finish, object slot "end works" could be called.
         }
-        // Set deferred object deletion?
-        if (_to_delete_later_object && _finished_signal)
-        {
-            res = connect(obj, _finished_signal, obj, SLOT(deleteLater()));
-            Q_ASSERT_X (res, "connect", "connection is not established");
-            // By end object works, will be set deferred deletion.
-        }
         emit objectIsReady();
     }
 

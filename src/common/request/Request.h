@@ -1,7 +1,7 @@
 #ifndef IRBISPANEL_REQUEST_H
 #define IRBISPANEL_REQUEST_H
 
-#include <websocket.h>
+#include <QWebSocket>
 #include <QCryptographicHash>
 #include "../system/System.h"
 #include "../session/session.h"
@@ -17,7 +17,7 @@ public:
     QByteArray result();
 
 signals:
-    void sendToWebsocket(QWebSocket*, QByteArray);
+    void sendToWebsocket(QWebSocket*, QByteArray, Request*);
 
 private slots:
     void readyData(QJsonObject, QString);
@@ -30,8 +30,10 @@ private:
     QString message;
     QString req_sesid;
     QString ses_name;
+    quint32 r_number;
     QJsonObject response;
     System system;
+    RequestInterface *object;
 };
 
 
